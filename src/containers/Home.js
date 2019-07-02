@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -16,31 +17,18 @@ import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import Container from '@material-ui/core/Container';
-import Markdown from 'markdown-to-jsx';
-import resume from '../assets/resume.md';
 
-function MadeWithLove() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Built with love by the '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Material-UI
-      </Link>
-      {' team.'}
-    </Typography>
-  );
-}
+import Markdown from '../components/Markdown';
+import resume from '../assets/resume.md';
+import education from '../assets/education.md';
+
 
 const useStyles = makeStyles(theme => ({
   toolbar: {
     borderBottom: `1px solid ${theme.palette.divider}`,
-  },
-  toolbarTitle: {
     flex: 1,
-  },
-  toolbarSecondary: {
-    justifyContent: 'space-between',
     overflowX: 'auto',
+    justifyContent: 'right'
   },
   toolbarLink: {
     padding: theme.spacing(1),
@@ -103,65 +91,65 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const sections = [
-  'Home',
-  'Portfolio',
-  'Resume'
+  'home',
+  'portfolio',
+  'resume'
 ];
 
-const featuredPosts = [
+const latestProjects = [
   {
-    title: 'Featured post',
-    date: 'Nov 12',
+    title: 'DealPal',
+    date: 'June 2019',
     description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
+      'Mobile optimized app designed to locate and track nearby deals.',
   },
   {
-    title: 'Post title',
-    date: 'Nov 11',
+    title: 'mise en ++',
+    date: 'May 2019',
     description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
+      'Single page web app designed to help with your kitchen adventures!',
   },
 ];
-
-const posts = [resume];
 
 const projects = [
-  'March 2020',
-  'February 2020',
-  'January 2020',
-  'December 2019',
-  'November 2019',
-  'October 2019',
-  'September 2019',
-  'August 2019',
-  'July 2019',
-  'June 2019',
-  'May 2019',
-  'April 2019',
+  'DealPal',
+  'mise en ++',
+  'space x cookie monster',
 ];
+
+const technologies = [
+  'JavaScript ES6',
+  'React',
+  'Redux',
+  'Ruby on Rails',
+  'Git',
+  'HTML / CSS',
+  'Canvas',
+  'Heroku',
+  'AJAX',
+  'Material UI / Semantic / Bootstrap',
+  'Mobile First Thinking',
+  'Illustrator'
+]
 
 const social = ['GitHub', 'Twitter', 'Facebook'];
 
 const Home = () => {
+  // console.log(resume);
   const classes = useStyles();
+  // fetch(resume)
+  // .then(response => response.text())
+  // .then(text => {
+  //   // Logs a string of Markdown content.
+  //   // Now you could use e.g. <rexxars/react-markdown> to render it.
+  //   console.log(text);
+  // });
 
   return (
     <React.Fragment>
       <CssBaseline />
       <Container maxWidth="lg">
-        <Toolbar className={classes.toolbar}>
-          <Typography
-            component="h2"
-            variant="h5"
-            color="inherit"
-            align="center"
-            noWrap
-            className={classes.toolbarTitle}
-          >
-            Joshua Yan
-          </Typography>
-        </Toolbar>
-        <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
+        <Toolbar component="nav" variant="dense" className={classes.toolbar}>
           {sections.map(section => (
             <Link
               color="inherit"
@@ -191,15 +179,11 @@ const Home = () => {
               <Grid item md={6}>
                 <div className={classes.mainFeaturedPostContent}>
                   <Typography component="h1" variant="h3" color="inherit" gutterBottom>
-                    Title of a longer featured blog post
+                    joshua yan
                   </Typography>
                   <Typography variant="h5" color="inherit" paragraph>
-                    Multiple lines of text that form the lede, informing new readers quickly and
-                    efficiently about what&apos;s most interesting in this post&apos;s contents.
+                    new york based fullstack software developer
                   </Typography>
-                  <Link variant="subtitle1" href="#">
-                    Continue reading…
-                  </Link>
                 </div>
               </Grid>
             </Grid>
@@ -207,20 +191,20 @@ const Home = () => {
           {/* End main featured post */}
           {/* Sub featured posts */}
           <Grid container spacing={4} className={classes.cardGrid}>
-            {featuredPosts.map(post => (
-              <Grid item key={post.title} xs={12} md={6}>
+            {latestProjects.map(project => (
+              <Grid item key={project.title} xs={12} md={6}>
                 <CardActionArea component="a" href="#">
                   <Card className={classes.card}>
                     <div className={classes.cardDetails}>
                       <CardContent>
                         <Typography component="h2" variant="h5">
-                          {post.title}
+                          {project.title}
                         </Typography>
                         <Typography variant="subtitle1" color="textSecondary">
-                          {post.date}
+                          {project.date}
                         </Typography>
                         <Typography variant="subtitle1" paragraph>
-                          {post.description}
+                          {project.description}
                         </Typography>
                         <Typography variant="subtitle1" color="primary">
                           Continue reading...
@@ -239,43 +223,45 @@ const Home = () => {
               </Grid>
             ))}
           </Grid>
-          {/* End sub featured posts */}
+          {/* End sub featured projects */}
           <Grid container spacing={5} className={classes.mainGrid}>
             {/* Main content */}
             <Grid item xs={12} md={8}>
               <Typography variant="h6" gutterBottom>
-                Work Experience
+                work experience
               </Typography>
               <Divider />
-              {posts.map(post => (
-                <Markdown className={classes.markdown} key={post.substring(0, 40)}>
-                  {post}
-                </Markdown>
-              ))}
+              <Markdown className={classes.markdown} key={resume.substring(0, 10)}>
+                {resume}
+              </Markdown>
               <Typography variant="h6" gutterBottom>
-                Education
+                education
               </Typography>
               <Divider />
-              {posts.map(post => (
-                <Markdown className={classes.markdown} key={post.substring(0, 40)}>
-                  {post}
-                </Markdown>
-              ))}
+              <Markdown className={classes.markdown} key={education.substring(0, 10)}>
+                {education}
+              </Markdown>
             </Grid>
             {/* End main content */}
             {/* Sidebar */}
             <Grid item xs={12} md={4}>
               <Paper elevation={0} className={classes.sidebarAboutBox}>
                 <Typography variant="h6" gutterBottom>
-                  Technologies
+                  technologies
                 </Typography>
                 <Typography>
-                  Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit
-                  amet fermentum. Aenean lacinia bibendum nulla sed consectetur.
+                  {technologies.map(t => {
+                    return (
+                      <span key={t}>
+                        + {t}
+                        <br/>
+                      </span>
+                    )
+                  })}
                 </Typography>
               </Paper>
               <Typography variant="h6" gutterBottom className={classes.sidebarSection}>
-                Projects
+                projects
               </Typography>
               {projects.map(project => (
                 <Link display="block" variant="body1" href="#" key={project}>
@@ -283,7 +269,7 @@ const Home = () => {
                 </Link>
               ))}
               <Typography variant="h6" gutterBottom className={classes.sidebarSection}>
-                Social
+                social
               </Typography>
               {social.map(network => (
                 <Link display="block" variant="body1" href="#" key={network}>
@@ -304,7 +290,9 @@ const Home = () => {
           <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
             Something here to give the footer a purpose!
           </Typography>
-          <MadeWithLove />
+          <Typography variant="body2" color="textSecondary" align="center">
+            © 2019 Joshua Yan.&nbsp;All rights reserved. Fullstack Developer
+          </Typography>
         </Container>
       </footer>
       {/* End footer */}
