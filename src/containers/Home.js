@@ -93,10 +93,12 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const sections = [
-  'home',
-  'portfolio',
-  'resume'
+  {name: 'home', url: '/'},
+  {name: 'portfolio', url: '/portfolio'},
+  {name: 'resume', url: 'https://drive.google.com/file/d/1JXaUU60BelPoo6Kz2DIpdsfQk00NQam_/view?usp=sharing'}
 ];
+
+
 
 const latestProjects = [
   {
@@ -114,10 +116,12 @@ const latestProjects = [
 ];
 
 const projects = [
-  'DealPal',
-  'mise en ++',
-  'space x cookie monster',
+  { name: 'DealPal', url: 'https://github.com/jyan95/project-deal-locator' },
+  { name: 'mise en ++', url: 'https://github.com/jyan95/project-mise-en-plusplus' },
+  { name: 'space x cookie monster', url: 'https://github.com/jyan95/project-space-x-cookiemonster'}
 ];
+
+
 
 const technologies = [
   'JavaScript ES6',
@@ -134,7 +138,10 @@ const technologies = [
   'Illustrator'
 ]
 
-const social = ['GitHub', 'Twitter', 'Facebook'];
+const social = [
+  { page: 'GitHub', url: 'https://github.com/jyan95' },
+  { page: 'LinkedIn', url: 'https://www.linkedin.com/in/jyan95' }
+];
 
 const Home = () => {
   // console.log(resume);
@@ -156,12 +163,13 @@ const Home = () => {
             <Link
               color="inherit"
               noWrap
-              key={section}
+              key={section.name}
               variant="body2"
-              href="#"
+              href={section.url}
+              target='new'
               className={classes.toolbarLink}
             >
-              {section}
+              {section.name}
             </Link>
           ))}
         </Toolbar>
@@ -191,7 +199,12 @@ const Home = () => {
             </Grid>
           </Paper>
           {/* End main featured post */}
-          {/* Sub featured posts */}
+          {/* Latest Projects */}
+          <Typography variant="h6" gutterBottom>
+            latest projects
+          </Typography>
+          <Divider />
+          <br/>
           <Grid container spacing={4} className={classes.cardGrid}>
             {latestProjects.map(project => (
               <Grid item key={project.title} xs={12} md={6}>
@@ -225,9 +238,9 @@ const Home = () => {
               </Grid>
             ))}
           </Grid>
-          {/* End sub featured projects */}
+          {/* End latest projects */}
           <Grid container spacing={5} className={classes.mainGrid}>
-            {/* Main content */}
+            {/* Work and Education */}
             <Grid item xs={12} md={8}>
               <Typography variant="h6" gutterBottom>
                 work experience
@@ -240,8 +253,8 @@ const Home = () => {
               <Divider />
               <Education/>
             </Grid>
-            {/* End main content */}
-            {/* Sidebar */}
+            {/* End Work and Education */}
+            {/* Side Content */}
             <Grid item xs={12} md={4}>
               <Paper elevation={0} className={classes.sidebarAboutBox}>
                 <Typography variant="h6" gutterBottom>
@@ -262,20 +275,20 @@ const Home = () => {
                 projects
               </Typography>
               {projects.map(project => (
-                <Link display="block" variant="body1" href="#" key={project}>
-                  {project}
+                <Link display="block" variant="body1" href={project.url} target='new' key={project.name}>
+                  {project.name}
                 </Link>
               ))}
               <Typography variant="h6" gutterBottom className={classes.sidebarSection}>
                 social
               </Typography>
               {social.map(network => (
-                <Link display="block" variant="body1" href="#" key={network}>
-                  {network}
+                <Link display="block" variant="body1" href={network.url} target='new' key={network.page}>
+                  {network.page}
                 </Link>
               ))}
             </Grid>
-            {/* End sidebar */}
+            {/* End Side Content */}
           </Grid>
         </main>
       </Container>

@@ -34,7 +34,7 @@ const Experience = () => {
           CLIENT ASSOCIATE
         </Typography>
         <Typography className={classes.subtitle} component="h2">
-          <Link href='https://www.colemanrg.com' color='inherit' className={classes.link}>
+          <Link href='https://www.colemanrg.com' color='inherit' target='new' className={classes.link}>
             Coleman Research
           </Link>
           , New York, NY, 2018 - 2019
@@ -50,7 +50,7 @@ const Experience = () => {
           TEMP / CONTRACT
         </Typography>
         <Typography className={classes.subtitle} component="h2">
-          <Link href='https://www.occstrategy.com/en/' color='inherit' className={classes.link}>
+          <Link href='https://www.occstrategy.com/en/' color='inherit' target='new' className={classes.link}>
             OC&C Strategy
           </Link>
           , New York, NY, 2017 - 2018
@@ -64,7 +64,7 @@ const Experience = () => {
           SUMMER ANALYST
         </Typography>
         <Typography className={classes.subtitle} component="h2">
-          <Link href='https://www.rolandberger.com/en/?country=US' color='inherit' className={classes.link}>
+          <Link href='https://www.rolandberger.com/en/?country=US' target='new' color='inherit' className={classes.link}>
             Roland Berger
           </Link>
           , Shanghai, CN, 2016 - 2016
