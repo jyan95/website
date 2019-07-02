@@ -88,6 +88,8 @@ const ProjectCard = (props) => {
         className={classes.image}
         focusvisibileclassname={classes.focusVisible}
         style={{width: 400}}
+        href={props.project.url}
+        target='new'
       >
         <span
           className={classes.imageSrc}

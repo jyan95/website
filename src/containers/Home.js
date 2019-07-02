@@ -69,10 +69,6 @@ const useStyles = makeStyles(theme => ({
   sidebarSection: {
     marginTop: theme.spacing(3),
   },
-  footer: {
-    marginTop: theme.spacing(8),
-    padding: theme.spacing(6, 0),
-  }
 }));
 
 const sections = [
@@ -333,18 +329,6 @@ const Home = () => {
           </Grid>
         </main>
       </Container>
-      {/* Footer */}
-      <footer className={classes.footer}>
-        <Container maxWidth="lg">
-          <Typography variant="h6" align="center" gutterBottom>
-            Footer
-          </Typography>
-          <Typography variant="subtitle2" align="center" color="textSecondary" component="p">
-            this website is a work in progress
-          </Typography>
-        </Container>
-      </footer>
-      {/* End footer */}
     </React.Fragment>
   );
 }
