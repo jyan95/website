@@ -78,7 +78,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const ProjectCard = (props) => {
-  // console.log(props);
+  // console.log(props.project.img);
   const classes = useStyles();
 
   return (
@@ -87,12 +87,12 @@ const ProjectCard = (props) => {
         focusRipple
         className={classes.image}
         focusvisibileclassname={classes.focusVisible}
-        style={{width: props.project.width}}
+        style={{width: 400}}
       >
         <span
           className={classes.imageSrc}
           style={{
-            backgroundImage:`${props.project.url}`
+            backgroundImage:`url(${props.project.img})`
           }}
         />
         <span className={classes.imageBackdrop} />
@@ -102,6 +102,7 @@ const ProjectCard = (props) => {
             variant='subtitle1'
             color='inherit'
             className={classes.imageTitle}
+            style={{fontFamily: 'Ubuntu, sans-serif'}}
           >
             {props.project.title}
           </Typography>

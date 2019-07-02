@@ -13,11 +13,6 @@ import Link from '@material-ui/core/Link';
 import Divider from '@material-ui/core/Divider';
 import Container from '@material-ui/core/Container';
 
-// import Markdown from '../components/Markdown';
-// import resume from '../assets/resume.md';
-// import education from '../assets/education.md';
-
-
 const useStyles = makeStyles(theme => ({
   toolbar: {
     borderBottom: `1px solid ${theme.palette.divider}`,
@@ -29,7 +24,7 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(1),
     flexShrink: 0,
   },
-  mainFeaturedPost: {
+  banner: {
     position: 'relative',
     backgroundColor: theme.palette.grey[800],
     color: theme.palette.common.white,
@@ -47,7 +42,7 @@ const useStyles = makeStyles(theme => ({
     left: 0,
     backgroundColor: 'rgba(0,0,0,.3)',
   },
-  mainFeaturedPostContent: {
+  bannerContent: {
     position: 'relative',
     padding: theme.spacing(3),
     [theme.breakpoints.up('md')]: {
@@ -67,11 +62,7 @@ const useStyles = makeStyles(theme => ({
   cardMedia: {
     width: 160,
   },
-  markdown: {
-    ...theme.typography.body2,
-    padding: theme.spacing(3, 0),
-  },
-  sidebarAboutBox: {
+  technologiesBox: {
     padding: theme.spacing(2),
     backgroundColor: theme.palette.grey[200],
   },
@@ -79,10 +70,9 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(3),
   },
   footer: {
-    backgroundColor: theme.palette.background.paper,
     marginTop: theme.spacing(8),
     padding: theme.spacing(6, 0),
-  },
+  }
 }));
 
 const sections = [
@@ -105,38 +95,38 @@ const sections = [
 
 const latestProjects = [
   {
-    url: 'https://imgur.com/NXjFuUZ',
+    img: 'https://i.imgur.com/NXjFuUZ.png',
     title: 'DealPal',
     width: '30%',
+    url: 'https://dealpal.herokuapp.com'
   },
   {
-    url: 'https://imgur.com/p9mCAIP',
+    img: 'https://i.imgur.com/p9mCAIP.png',
     title: 'mise en ++',
     width: '30%',
+    url: 'https://miseenplus.herokuapp.com'
   },
   {
-    url: 'https://imgur.com/VP1vVyL',
+    img: 'https://i.imgur.com/VP1vVyL.png',
     title: 'space x cookie monster',
     width: '30%',
+    url: 'https://jyan95.github.io/spaceXcookiemonster/'
   },
 ];
 
 const projects = [
   {
-    url: 'https://imgur.com/NXjFuUZ',
-    title: 'DealPal',
-    width: '30%',
+    url: 'https://github.com/jyan95/project-deal-locator',
+    title: 'DealPal'
   },
   {
-    url: 'https://imgur.com/p9mCAIP',
-    title: 'mise en ++',
-    width: '30%',
+    url: 'https://github.com/jyan95/project-mise-en-plusplus',
+    title: 'mise en ++'
   },
   {
-    url: 'https://imgur.com/VP1vVyL',
-    title: 'space x cookie monster',
-    width: '30%',
-  },
+    url: 'https://github.com/jyan95/project-space-x-cookiemonster',
+    title: 'space x cookie monster'
+  }
 ];
 
 const technologies = [
@@ -154,26 +144,32 @@ const technologies = [
 ]
 
 const social = [
-  { page: 'GitHub', url: 'https://github.com/jyan95' },
-  { page: 'LinkedIn', url: 'https://www.linkedin.com/in/jyan95' }
+  {
+    page: 'GitHub',
+    url: 'https://github.com/jyan95'
+  },
+  {
+    page: 'LinkedIn',
+    url: 'https://www.linkedin.com/in/jyan95'
+  },
+  {
+    page: 'Medium',
+    url: 'https://medium.com/@jyan0602'
+  }
 ];
 
 const Home = () => {
-  // console.log(resume);
   const classes = useStyles();
-  // fetch(resume)
-  // .then(response => response.text())
-  // .then(text => {
-  //   // Logs a string of Markdown content.
-  //   // Now you could use e.g. <rexxars/react-markdown> to render it.
-  //   console.log(text);
-  // });
 
   return (
     <React.Fragment>
       <CssBaseline />
       <Container maxWidth="lg">
-        <Toolbar component="nav" variant="dense" className={classes.toolbar}>
+        <Toolbar
+          component="nav"
+          variant="dense"
+          className={classes.toolbar}
+        >
           {sections.map(section => (
             section.name === 'resume' ?
             <Link
@@ -184,6 +180,7 @@ const Home = () => {
               href={section.url}
               target='new'
               className={classes.toolbarLink}
+              style={{fontFamily: 'Roboto Mono, monospace'}}
             >
               {section.name}
             </Link>
@@ -195,6 +192,7 @@ const Home = () => {
               variant="body2"
               href={section.url}
               className={classes.toolbarLink}
+              style={{fontFamily: 'Roboto Mono, monospace'}}
             >
               {section.name}
             </Link>
@@ -202,7 +200,7 @@ const Home = () => {
         </Toolbar>
         <main>
           {/* Main featured post */}
-          <Paper className={classes.mainFeaturedPost}>
+          <Paper className={classes.banner}>
             {/* Increase the priority of the hero background image */}
             {
               <img
@@ -214,11 +212,22 @@ const Home = () => {
             <div className={classes.overlay} />
             <Grid container>
               <Grid item md={6}>
-                <div className={classes.mainFeaturedPostContent}>
-                  <Typography component="h1" variant="h3" color="inherit" gutterBottom>
-                    joshua yan
+                <div className={classes.bannerContent}>
+                  <Typography
+                    component="h1"
+                    variant="h3"
+                    color="inherit"
+                    style={{fontFamily: 'Raleway, sans-serif'}}
+                    gutterBottom
+                  >
+                    <b>JOSHUA YAN</b>
                   </Typography>
-                  <Typography variant="h5" color="inherit" paragraph>
+                  <Typography
+                    variant="h5"
+                    color="inherit"
+                    paragraph
+                    style={{fontFamily: 'Ubuntu, sans-serif'}}
+                  >
                     new york based fullstack software developer
                   </Typography>
                 </div>
@@ -227,14 +236,23 @@ const Home = () => {
           </Paper>
           {/* End main featured post */}
           {/* Latest Projects */}
-          <Typography variant="h6" gutterBottom>
-            latest projects
+          <Typography
+            variant="h6"
+            style={{fontFamily: 'Roboto Mono, monospace'}}
+            gutterBottom
+          >
+            <b>// latest projects</b>
           </Typography>
           <Divider />
           <br/>
-          <Grid container direction='column'>
+          <Grid
+            container
+            direction='row'
+            justify='center'
+            spacing={2}
+          >
             {latestProjects.map(p => (
-              <Grid item key={p.title} xs={12} md={12}>
+              <Grid item key={p.title} xs={12} md={4}>
                 <ProjectCard project={p}/>
               </Grid>
             ))}
@@ -243,13 +261,21 @@ const Home = () => {
           <Grid container spacing={5} className={classes.mainGrid}>
             {/* Work and Education */}
             <Grid item xs={12} md={8}>
-              <Typography variant="h6" gutterBottom>
-                work experience
+              <Typography
+                variant="h6"
+                gutterBottom
+                style={{fontFamily: 'Roboto Mono, monospace'}}
+              >
+                <b>// work experience</b>
               </Typography>
               <Divider />
               <Experience/>
-              <Typography variant="h6" gutterBottom>
-                education
+              <Typography
+                variant="h6"
+                style={{fontFamily: 'Roboto Mono, monospace'}}
+                gutterBottom
+              >
+                <b>// education</b>
               </Typography>
               <Divider />
               <Education/>
@@ -257,11 +283,15 @@ const Home = () => {
             {/* End Work and Education */}
             {/* Side Content */}
             <Grid item xs={12} md={4}>
-              <Paper elevation={0} className={classes.sidebarAboutBox}>
-                <Typography variant="h6" gutterBottom>
+              <Paper elevation={0} className={classes.technologiesBox}>
+                <Typography
+                  variant="h6"
+                  style={{fontFamily: 'Roboto Mono, monospace'}}
+                  gutterBottom
+                >
                   technologies
                 </Typography>
-                <Typography>
+                <Typography variant='body2'>
                   {technologies.map(t => {
                     return (
                       <span key={t}>
@@ -272,15 +302,25 @@ const Home = () => {
                   })}
                 </Typography>
               </Paper>
-              <Typography variant="h6" gutterBottom className={classes.sidebarSection}>
-                projects
+              <Typography
+                variant="h6"
+                gutterBottom
+                className={classes.sidebarSection}
+                style={{fontFamily: 'Roboto Mono, monospace'}}
+              >
+                repositories
               </Typography>
               {projects.map(project => (
-                <Link display="block" variant="body1" href={project.url} target='new' key={project.name}>
-                  {project.name}
+                <Link display="block" variant="body1" href={project.url} target='new' key={project.title}>
+                  {project.title}
                 </Link>
               ))}
-              <Typography variant="h6" gutterBottom className={classes.sidebarSection}>
+              <Typography
+                variant="h6"
+                gutterBottom
+                className={classes.sidebarSection}
+                style={{fontFamily: 'Roboto Mono, monospace'}}
+              >
                 social
               </Typography>
               {social.map(network => (
