@@ -1,4 +1,6 @@
 import React from 'react';
+import Experience from '../components/Experience';
+import Education from '../components/Education';
 
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -231,16 +233,12 @@ const Home = () => {
                 work experience
               </Typography>
               <Divider />
-              <Markdown className={classes.markdown} key={resume.substring(0, 10)}>
-                {resume}
-              </Markdown>
+              <Experience/>
               <Typography variant="h6" gutterBottom>
                 education
               </Typography>
               <Divider />
-              <Markdown className={classes.markdown} key={education.substring(0, 10)}>
-                {education}
-              </Markdown>
+              <Education/>
             </Grid>
             {/* End main content */}
             {/* Sidebar */}
