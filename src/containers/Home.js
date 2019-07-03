@@ -73,18 +73,17 @@ const useStyles = makeStyles(theme => ({
 
 const sections = [
   {
-    name: 'home',
-    url: '/'},
-  {
-    name: 'portfolio',
-    url: '/portfolio'},
-  {
-    name: 'resume',
-    url: 'https://drive.google.com/file/d/1JXaUU60BelPoo6Kz2DIpdsfQk00NQam_/view?usp=sharing'},
-  {
     name: 'about',
-    url: '/about'
-  }
+    url: '/'
+  },
+  {
+    name: 'work',
+    url: '/'
+  },
+  {
+    name: 'experience',
+    url: 'https://drive.google.com/file/d/1JXaUU60BelPoo6Kz2DIpdsfQk00NQam_/view?usp=sharing'
+  },
 ];
 
 

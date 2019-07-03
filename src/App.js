@@ -25,7 +25,7 @@ function App() {
             Footer
           </Typography>
           <Typography variant="subtitle2" align="center" color="textSecondary" component="p">
-            w i p
+            website is w i p
           </Typography>
         </Container>
       </footer>
