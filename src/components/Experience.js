@@ -39,7 +39,7 @@ const Experience = () => {
           </Link>
           , New York, NY, 2018 - 2019
          </Typography>
-         <Typography variant='body2' color='secondary' component="h2">
+         <Typography variant='body2' color='inherit' component="h2">
          Identified industry trends and qualified experts to meet client specifications, responsible for over 33% of team sales.
          Improved business relations with Tiger Cubs and other investment management firms, grew book of business by ~10%.
          Consistent top performer, completed fast track to Associate, due for early promotion to Senior Associate

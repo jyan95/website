@@ -24,7 +24,7 @@ const Education = () => {
   const classes = useStyles();
 
   return (
-    <div>
+    <div id='education'>
     <CardContent>
       <Typography className={classes.title} gutterBottom>
         FULLSTACK SOFTWARE DEVELOPMENT IMMERSIVE

@@ -1,4 +1,5 @@
 import React from 'react';
+import $ from 'jquery';
 import Experience from '../components/Experience';
 import Education from '../components/Education';
 import ProjectCard from '../components/ProjectCard';
@@ -6,6 +7,7 @@ import ProjectCard from '../components/ProjectCard';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
+import CardContent from '@material-ui/core/CardContent';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
@@ -74,19 +76,20 @@ const useStyles = makeStyles(theme => ({
 const sections = [
   {
     name: 'about',
-    url: '/'
   },
   {
     name: 'work',
-    url: '/'
   },
   {
     name: 'experience',
+  },
+  {
+    name: 'resume',
     url: 'https://drive.google.com/file/d/1JXaUU60BelPoo6Kz2DIpdsfQk00NQam_/view?usp=sharing'
   },
 ];
 
-
+const about = 'hello'
 
 const latestProjects = [
   {
@@ -156,6 +159,13 @@ const social = [
 const Home = () => {
   const classes = useStyles();
 
+  function scrollTo(section) {
+    console.log('scrolling to', section);
+    $('html, body').animate({
+    scrollTop: $(`#${section}`).offset().top
+}, 1000);
+  }
+
   return (
     <React.Fragment>
       <CssBaseline />
@@ -185,7 +195,7 @@ const Home = () => {
               noWrap
               key={section.name}
               variant="body2"
-              href={section.url}
+              onClick={() => scrollTo(section.name)}
               className={classes.toolbarLink}
               style={{fontFamily: 'Roboto Mono, monospace'}}
             >
@@ -194,9 +204,8 @@ const Home = () => {
           ))}
         </Toolbar>
         <main>
-          {/* Main featured post */}
+          {/* Start Banner */}
           <Paper className={classes.banner}>
-            {/* Increase the priority of the hero background image */}
             {
               <img
                 style={{ display: 'none' }}
@@ -229,53 +238,72 @@ const Home = () => {
               </Grid>
             </Grid>
           </Paper>
-          {/* End main featured post */}
+          {/* End banner */}
+          <div id='about'>
+            <Typography
+              variant="h6"
+              style={{fontFamily: 'Roboto Mono, monospace'}}
+              gutterBottom
+            >
+              <b>// about me</b>
+            </Typography>
+            <Divider />
+            <CardContent>
+              <Typography variant='body2'>
+                {about}
+              </Typography>
+            </CardContent>
+          </div>
           {/* Latest Projects */}
-          <Typography
-            variant="h6"
-            style={{fontFamily: 'Roboto Mono, monospace'}}
-            gutterBottom
-          >
-            <b>// latest projects</b>
-          </Typography>
-          <Divider />
-          <br/>
-          <Grid
-            container
-            direction='row'
-            justify='center'
-            spacing={2}
-          >
-            {latestProjects.map(p => (
-              <Grid item key={p.title} xs={12} md={4}>
-                <ProjectCard project={p}/>
-              </Grid>
-            ))}
-          </Grid>
+          <div id='work'>
+            <Typography
+              variant="h6"
+              style={{fontFamily: 'Roboto Mono, monospace'}}
+              gutterBottom
+            >
+              <b>// latest projects</b>
+            </Typography>
+            <Divider />
+            <br/>
+            <Grid
+              container
+              direction='row'
+              justify='center'
+              spacing={2}
+            >
+              {latestProjects.map(p => (
+                <Grid item key={p.title} xs={12} md={4}>
+                  <ProjectCard project={p}/>
+                </Grid>
+              ))}
+            </Grid>
+          </div>
           {/* End latest projects */}
           <Grid container spacing={5} className={classes.mainGrid}>
-            {/* Work and Education */}
+            {/* Experience and Education */}
             <Grid item xs={12} md={8}>
-              <Typography
-                variant="h6"
-                gutterBottom
-                style={{fontFamily: 'Roboto Mono, monospace'}}
-              >
-                <b>// work experience</b>
-              </Typography>
-              <Divider />
-              <Experience/>
-              <Typography
-                variant="h6"
-                style={{fontFamily: 'Roboto Mono, monospace'}}
-                gutterBottom
-              >
-                <b>// education</b>
-              </Typography>
-              <Divider />
-              <Education/>
+              <div id='experience'>
+                <Typography
+                  variant="h6"
+                  gutterBottom
+                  style={{fontFamily: 'Roboto Mono, monospace'}}
+                >
+                  <b>// work experience</b>
+                </Typography>
+                <Divider />
+                <Experience/>
+                <Typography
+                  variant="h6"
+                  style={{fontFamily: 'Roboto Mono, monospace'}}
+                  gutterBottom
+                >
+                  <b>// education</b>
+                </Typography>
+                <Divider />
+                <Education/>
+              </div>
             </Grid>
-            {/* End Work and Education */}
+            {/* End Experience and Education */}
             {/* Side Content */}
             <Grid item xs={12} md={4}>
               <Paper elevation={0} className={classes.technologiesBox}>
