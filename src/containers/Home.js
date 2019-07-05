@@ -109,7 +109,7 @@ const projects = [
     img: 'https://i.imgur.com/VP1vVyL.png',
     title: 'space x cookie monster',
     width: '30%',
-    url: 'https://jyan95.github.io/spaceXcookiemonster/',
+    url: 'https://jyan95.github.io/spaceXcookiemonster',
     description: "A simple 'dodge and collect' game to be played from your desktop browser. Built on JavaScript and HTML Canvas.",
     tech: [
       'JS',
@@ -120,9 +120,21 @@ const projects = [
   },
   {
     img: '',
+    title: 'joshuayan.com',
+    width: '30%',
+    url: 'https://jyan95.github.io/website',
+    description: "This here website",
+    tech: [
+      'React',
+      'JS',
+      'MaterialUI'
+    ]
+  },
+  {
+    img: '',
     title: 'Toolbox',
     width: '30%',
-    url: 'https://jyan95.github.io/project-toolbox/',
+    url: 'https://jyan95.github.io/project-toolbox',
     description: "Web app designed for users to rent and lend tools. Users can list tools available to lend, and rent tools from others.",
     tech: [
       'Ruby/Rails',
@@ -133,7 +145,7 @@ const projects = [
     img: '',
     title: "Biddler's Respite",
     width: '30%',
-    url: 'https://jyan95.github.io/project-biddlers-respite/',
+    url: 'https://jyan95.github.io/project-biddlers-respite',
     description: "A Trivia App to be played from your Command Line.",
     tech: [
       'Ruby',

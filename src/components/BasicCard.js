@@ -6,7 +6,9 @@ import Grid from '@material-ui/core/Grid';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
+import GithubIcon from '../assets/github.png';
 
 const useStyles = makeStyles({
   card: {
@@ -31,24 +33,35 @@ const BasicCard = (props) => {
 
   return (
     <Card className={classes.card}>
-      <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions>
-      <CardContent>
-        <Typography variant="h5" component="h2">
-          {props.project.title}
-        </Typography>
-        <Typography variant="body2" component="p">
-          {props.project.description}
-        </Typography>
-        <br/>
-        <Typography variant="body2" component="p" style={{
-          fontFamily: 'Roboto Mono, monospace',
-          fontSize: 10,
-        }}>
-          {props.project.tech.map(t => `${t} `)}
-        </Typography>
-      </CardContent>
+      <Grid container direction='row' justify='flex-end'>
+        <CardActions>
+          <Button variant='outlined' href={props.project.url} size="small">github</Button>
+        </CardActions>
+      </Grid>
+      <Grid
+        container
+        direction='column'
+        justify='space-between'
+        alignItems='flex-start'
+      >
+        <CardContent>
+          <Typography variant="h5" component="h2">
+            {props.project.title}
+          </Typography>
+          <Typography variant="body2" component="p">
+            {props.project.description}
+          </Typography>
+          <br/>
+        </CardContent>
+        <CardContent>
+          <Typography variant="body2" component="p" style={{
+            fontFamily: 'Roboto Mono, monospace',
+            fontSize: 10,
+          }}>
+            {props.project.tech.map(t => `${t} `)}
+          </Typography>
+        </CardContent>
+      </Grid>
     </Card>
   );
 }
