@@ -75,9 +75,6 @@ const useStyles = makeStyles(theme => ({
 
 const sections = [
   {
-    name: 'about',
-  },
-  {
     name: 'work',
   },
   {
@@ -89,7 +86,22 @@ const sections = [
   },
 ];
 
-const about = 'hello'
+const about =
+  <p>
+    I was born in Michigan.
+    <br/>
+    I moved to China when I was 10.
+    <br/>
+    I moved back to Michigan for university.
+    <br/>
+    I now live in New York.
+    <br/>
+    I left my job to learn to write code.
+    <br/>
+    I really enjoy it.
+    <br/>
+    I also enjoy rock climbing, swimming, and shooting pool.
+  </p>
 
 const latestProjects = [
   {
@@ -232,7 +244,7 @@ const Home = () => {
                     paragraph
                     style={{fontFamily: 'Ubuntu, sans-serif'}}
                   >
-                    new york based fullstack software developer
+                    new york based fullstack web developer
                   </Typography>
                 </div>
               </Grid>
@@ -249,7 +261,7 @@ const Home = () => {
             </Typography>
             <Divider />
             <CardContent>
-              <Typography variant='body2'>
+              <Typography variant='subtitle1'>
                 {about}
               </Typography>
             </CardContent>
@@ -261,7 +273,7 @@ const Home = () => {
               style={{fontFamily: 'Roboto Mono, monospace'}}
               gutterBottom
             >
-              <b>// latest projects</b>
+              <b>// featured works</b>
             </Typography>
             <Divider />
             <br/>
@@ -288,7 +300,7 @@ const Home = () => {
                   gutterBottom
                   style={{fontFamily: 'Roboto Mono, monospace'}}
                 >
-                  <b>// work experience</b>
+                  <b>// experience</b>
                 </Typography>
                 <Divider />
                 <Experience/>
@@ -331,7 +343,7 @@ const Home = () => {
                 className={classes.sidebarSection}
                 style={{fontFamily: 'Roboto Mono, monospace'}}
               >
-                repositories
+                more work
               </Typography>
               {projects.map(project => (
                 <Link display="block" variant="body1" href={project.url} target='new' key={project.title}>
