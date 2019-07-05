@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
     position: 'relative',
     backgroundColor: theme.palette.grey[800],
     color: theme.palette.common.white,
-    marginTop: theme.spacing(4),
+    marginTop: theme.spacing(6),
     marginBottom: theme.spacing(4),
     backgroundImage: 'url(https://i.imgur.com/WBlNmxU.jpg)',
     backgroundSize: 'cover',
@@ -63,7 +63,7 @@ const useStyles = makeStyles(theme => ({
 
 const about =
   <p>
-    I was born in Michigan.
+    I lived in Michigan.
     <br/>
     I moved to China when I was 10.
     <br/>
@@ -83,26 +83,50 @@ const latestProjects = [
     img: 'https://i.imgur.com/NXjFuUZ.png',
     title: 'DealPal',
     width: '30%',
-    url: 'https://dealpal.herokuapp.com'
+    url: 'https://dealpal.herokuapp.com',
+    description: 'Mobile optimized web app for locating nearby deals. View and track deals near you based on live deals from Groupon and Restaurant.com. Sign in to follow deals, and add deals to the map to be seen by other users.',
+    tech: [
+      'React',
+      'Node.js',
+      'Leaflet',
+      'Ruby/Rails',
+      'DiscountAPI',
+      'MapquestAPI',
+      'Material UI'
+    ]
   },
   {
     img: 'https://i.imgur.com/p9mCAIP.png',
     title: 'mise en ++',
     width: '30%',
-    url: 'https://miseenplus.herokuapp.com'
+    url: 'https://miseenplus.herokuapp.com',
+    description: 'Web app designed to help with recipe collection and cooking. Users can create kitchens to categorize / collect recipes, and cook when ready. Ingredients and instructions are separated and listed on a task lister page, where users can track to-dos, in progess, and finished items, along with elapsed time for each.',
+    tech: [
+      'React',
+      'Node.js',
+      'Ruby/Rails',
+      'Semantic'
+    ]
   },
   {
     img: 'https://i.imgur.com/VP1vVyL.png',
     title: 'space x cookie monster',
     width: '30%',
-    url: 'https://jyan95.github.io/spaceXcookiemonster/'
+    url: 'https://jyan95.github.io/spaceXcookiemonster/',
+    description: "A simple 'dodge and collect' game to be played from your desktop browser. Built on JavaScript and HTML Canvas.",
+    tech: [
+      'Node.js',
+      'HTML Canvas',
+      'Ruby/Rails',
+      'Bootstrap'
+    ]
   },
 ];
 
 const projects = [
   {
     url: 'https://github.com/jyan95/project-deal-locator',
-    title: 'DealPal'
+    title: 'DealPal',
   },
   {
     url: 'https://github.com/jyan95/project-mise-en-plusplus',
@@ -213,22 +237,32 @@ const Home = () => {
               style={{fontFamily: 'Roboto Mono, monospace'}}
               gutterBottom
             >
-              <b>// featured works</b>
+              <b>// featured work</b>
             </Typography>
             <Divider />
             <br/>
+            <br/>
             <Grid
               container
-              direction='row'
-              justify='center'
-              spacing={2}
+              direction='column'
+              justify='space-evenly'
+              spacing={6}
+              alignItems='center'
             >
               {latestProjects.map(p => (
-                <Grid item key={p.title} xs={12} md={4}>
-                  <ProjectCard project={p}/>
-                </Grid>
+                <ProjectCard project={p}/>
               ))}
             </Grid>
+            <br/>
+            <br/>
+            <Typography
+              variant="h6"
+              style={{fontFamily: 'Roboto Mono, monospace'}}
+              gutterBottom
+            >
+              <b>// more work</b>
+            </Typography>
+            <Divider />
           </div>
           {/* End latest projects */}
           <Grid container spacing={5} className={classes.mainGrid}>
@@ -258,7 +292,7 @@ const Home = () => {
             {/* End Experience and Education */}
             {/* Side Content */}
             <Grid item xs={12} md={4}>
-              <Paper elevation={0} className={classes.technologiesBox}>
+              <Paper elevation={1} className={classes.technologiesBox}>
                 <Typography
                   variant="h6"
                   style={{fontFamily: 'Roboto Mono, monospace'}}
@@ -283,7 +317,7 @@ const Home = () => {
                 className={classes.sidebarSection}
                 style={{fontFamily: 'Roboto Mono, monospace'}}
               >
-                work
+                more work
               </Typography>
               {projects.map(project => (
                 <Link display="block" variant="body1" href={project.url} target='new' key={project.title}>

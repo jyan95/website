@@ -3,17 +3,19 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+import CardContent from '@material-ui/core/CardContent';
 
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
     flexWrap: 'wrap',
-    minWidth: 300,
-    width: '100%',
+    flexGrow: 1
   },
   image: {
     position: 'relative',
-    height: 200,
+    height: 255,
     [theme.breakpoints.down('xs')]: {
       width: '100% !important', // Overrides inline-style
       height: 100,
@@ -25,9 +27,6 @@ const useStyles = makeStyles(theme => ({
       },
       '& $imageMarked': {
         opacity: 0,
-      },
-      '& $imageTitle': {
-        border: '4px solid currentColor',
       },
     },
   },
@@ -62,10 +61,6 @@ const useStyles = makeStyles(theme => ({
     opacity: 0.4,
     transition: theme.transitions.create('opacity'),
   },
-  imageTitle: {
-    position: 'relative',
-    padding: `${theme.spacing(2)}px ${theme.spacing(4)}px ${theme.spacing(1) + 6}px`,
-  },
   imageMarked: {
     height: 3,
     width: 18,
@@ -75,6 +70,10 @@ const useStyles = makeStyles(theme => ({
     left: 'calc(50% - 9px)',
     transition: theme.transitions.create('opacity'),
   },
+  descriptionBox: {
+    padding: theme.spacing(2),
+    backgroundColor: theme.palette.grey[200],
+  },
 }));
 
 const ProjectCard = (props) => {
@@ -83,33 +82,60 @@ const ProjectCard = (props) => {
 
   return (
     <div className={classes.root}>
-      <ButtonBase
-        focusRipple
-        className={classes.image}
-        focusvisibileclassname={classes.focusVisible}
-        style={{width: 400}}
-        href={props.project.url}
-        target='new'
-      >
-        <span
-          className={classes.imageSrc}
-          style={{
-            backgroundImage:`url(${props.project.img})`
-          }}
-        />
-        <span className={classes.imageBackdrop} />
-        <span className={classes.imageButton} >
-          <Typography
-            component='span'
-            variant='subtitle1'
-            color='inherit'
-            className={classes.imageTitle}
-            style={{fontFamily: 'Ubuntu, sans-serif'}}
-          >
-            {props.project.title}
-          </Typography>
-        </span>
-      </ButtonBase>
+      <CardContent>
+        <Grid
+          container
+          direction='row'
+          justify='space-evenly'
+          alignItems='center'
+        >
+          <Grid item>
+            <ButtonBase
+              focusRipple
+              className={classes.image}
+              focusvisibileclassname={classes.focusVisible}
+              style={{width: 500}}
+              href={props.project.url}
+              target='new'
+            >
+              <span
+                className={classes.imageSrc}
+                style={{
+                  backgroundImage:`url(${props.project.img})`
+                }}
+              />
+              <span className={classes.imageBackdrop} />
+            </ButtonBase>
+          </Grid>
+          <Grid item xs={8} md={6}>
+            <Typography
+              gutterBottom
+              variant="h4"
+              align='left'
+              style={{fontFamily: 'Raleway, sans-serif'}}
+            >
+              <b>{props.project.title}</b>
+            </Typography>
+            <Paper elevation={1} className={classes.descriptionBox} square>
+              <Typography variant="body2" gutterBottom>
+                {props.project.description}
+              </Typography>
+            </Paper>
+            <br/>
+            <Typography
+              variant="body2"
+              color="textSecondary"
+              align='right'
+              style={{
+                fontFamily: 'Roboto Mono, monospace',
+                fontSize: 11,
+              }}
+            >
+              {props.project.tech.map(t => `${t} `)}
+            </Typography>
+          </Grid>
+        </Grid>
+      </CardContent>
     </div>
   );
 }
