@@ -35,7 +35,9 @@ const BasicCard = (props) => {
     <Card className={classes.card}>
       <Grid container direction='row' justify='flex-end'>
         <CardActions>
-          <Button variant='outlined' href={props.project.url} size="small">github</Button>
+          <IconButton href={props.project.url} target='new'>
+            <img src={GithubIcon} style={{width:25}} alt='Github'/>
+          </IconButton>
         </CardActions>
       </Grid>
       <Grid
@@ -56,7 +58,7 @@ const BasicCard = (props) => {
         <CardContent>
           <Typography variant="body2" component="p" style={{
             fontFamily: 'Roboto Mono, monospace',
-            fontSize: 10,
+            fontSize: 11,
           }}>
             {props.project.tech.map(t => `${t} `)}
           </Typography>

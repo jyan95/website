@@ -81,7 +81,8 @@ const projects = [
     title: 'DealPal',
     width: '30%',
     url: 'https://dealpal.herokuapp.com',
-    description: 'Mobile optimized web app for locating nearby deals. View and track deals near you based on live deals from Groupon and Restaurant.com. Sign in to follow deals, and add deals to the map to be seen by other users.',
+    repo: 'https://github.com/jyan95/project-deal-locator',
+    description: 'Mobile optimized web app for locating nearby deals. View and track deals near you based on live deals from Groupon and Restaurant.com. Sign in to follow deals, and add deals to the map to be seen by other users. Hosted on Heroku.',
     tech: [
       'React',
       'JS',
@@ -97,7 +98,8 @@ const projects = [
     title: 'mise en ++',
     width: '30%',
     url: 'https://miseenplus.herokuapp.com',
-    description: 'Web app designed to help with recipe collection and cooking. Users can create kitchens to categorize / collect recipes, and cook when ready. Ingredients and instructions are separated and listed on a task lister page, where users can track to-dos, in progess, and finished items, along with elapsed time for each.',
+    repo: 'https://github.com/jyan95/project-mise-en-plusplus',
+    description: 'Web app designed to help with recipe collection and cooking. Users can create kitchens to categorize / collect recipes, and cook when ready. Ingredients and instructions are separated and listed on a task lister page, where users can track to-dos, in progess, and finished items, along with elapsed time for each. Hosted on Heroku.',
     tech: [
       'React',
       'JS',
@@ -110,7 +112,8 @@ const projects = [
     title: 'space x cookie monster',
     width: '30%',
     url: 'https://jyan95.github.io/spaceXcookiemonster',
-    description: "A simple 'dodge and collect' game to be played from your desktop browser. Built on JavaScript and HTML Canvas.",
+    repo: 'https://github.com/jyan95/project-space-x-cookiemonster',
+    description: "A simple 'dodge and collect' game to be played from your desktop browser. Built on JavaScript and HTML Canvas. Frontend hosted on GitHub Pages, backend on Heroku.",
     tech: [
       'JS',
       'HTML Canvas',
@@ -122,7 +125,8 @@ const projects = [
     img: '',
     title: 'joshuayan.com',
     width: '30%',
-    url: 'https://jyan95.github.io/website',
+    url: 'https://github.com/jyan95/website',
+    repo: 'https://github.com/jyan95/website',
     description: "This here website",
     tech: [
       'React',
@@ -134,7 +138,8 @@ const projects = [
     img: '',
     title: 'Toolbox',
     width: '30%',
-    url: 'https://jyan95.github.io/project-toolbox',
+    url: 'https://github.com/jyan95/project-toolbox',
+    repo: 'https://github.com/jyan95/project-toolbox',
     description: "Web app designed for users to rent and lend tools. Users can list tools available to lend, and rent tools from others.",
     tech: [
       'Ruby/Rails',
@@ -145,7 +150,8 @@ const projects = [
     img: '',
     title: "Biddler's Respite",
     width: '30%',
-    url: 'https://jyan95.github.io/project-biddlers-respite',
+    url: 'https://github.com/jyan95/project-biddlers-respite',
+    repo: 'https://github.com/jyan95/project-biddlers-respite',
     description: "A Trivia App to be played from your Command Line.",
     tech: [
       'Ruby',

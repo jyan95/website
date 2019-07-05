@@ -2,10 +2,14 @@ import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
+import IconButton from '@material-ui/core/IconButton';
+import GithubIcon from '../assets/github.png';
+import LaunchIcon from '@material-ui/icons/Launch'
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -67,12 +71,11 @@ const useStyles = makeStyles(theme => ({
     transition: theme.transitions.create('opacity'),
   },
   imageMarked: {
-    height: 3,
+    color: 'white',
+    opacity: 0.7,
+    height: 18,
     width: 18,
-    backgroundColor: theme.palette.common.white,
     position: 'absolute',
-    bottom: -2,
-    left: 'calc(50% - 9px)',
     transition: theme.transitions.create('opacity'),
   },
   descriptionBox: {
@@ -117,7 +120,7 @@ const FeaturedCard = (props) => {
           <Grid item xs={12} md={7}>
             <Typography
               gutterBottom
-              variant="h4"
+              variant="h5"
               align='right'
               style={{fontFamily: 'Raleway, sans-serif'}}
             >
@@ -140,6 +143,14 @@ const FeaturedCard = (props) => {
             >
               {props.project.tech.map(t => `${t} `)}
             </Typography>
+            <Grid item align='right'>
+              <IconButton href={props.project.url} target='new'>
+                <LaunchIcon/>
+              </IconButton>
+              <IconButton href={props.project.repo} target='new'>
+                <img src={GithubIcon} style={{width:22}} alt='Github'/>
+              </IconButton>
+            </Grid>
           </Grid>
         </Grid>
       </CardContent>
