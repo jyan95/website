@@ -1,11 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import $ from 'jquery';
+
+import Navbar from '../components/Navbar';
 import Experience from '../components/Experience';
 import Education from '../components/Education';
 import ProjectCard from '../components/ProjectCard';
 
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import CardContent from '@material-ui/core/CardContent';
 import Paper from '@material-ui/core/Paper';
@@ -14,22 +18,15 @@ import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 import Divider from '@material-ui/core/Divider';
 import Container from '@material-ui/core/Container';
+import Slide from '@material-ui/core/Slide';
+import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 
 const useStyles = makeStyles(theme => ({
-  toolbar: {
-    borderBottom: `1px solid ${theme.palette.divider}`,
-    flex: 1,
-    overflowX: 'auto',
-    justifyContent: 'right'
-  },
-  toolbarLink: {
-    padding: theme.spacing(1),
-    flexShrink: 0,
-  },
   banner: {
     position: 'relative',
     backgroundColor: theme.palette.grey[800],
     color: theme.palette.common.white,
+    marginTop: theme.spacing(4),
     marginBottom: theme.spacing(4),
     backgroundImage: 'url(https://i.imgur.com/WBlNmxU.jpg)',
     backgroundSize: 'cover',
@@ -63,19 +60,6 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(3),
   },
 }));
-
-const sections = [
-  {
-    name: 'work',
-  },
-  {
-    name: 'experience',
-  },
-  {
-    name: 'resume',
-    url: 'https://drive.google.com/file/d/1JXaUU60BelPoo6Kz2DIpdsfQk00NQam_/view?usp=sharing'
-  },
-];
 
 const about =
   <p>
@@ -159,93 +143,54 @@ const social = [
   },
   {
     page: 'Gmail',
-    url: 'https://jyan0602@gmail.com'
+    url: 'mailto:jyan0602@gmail.com'
   },
 ];
 
 const Home = () => {
   const classes = useStyles();
 
-  function scrollTo(section) {
-    console.log('scrolling to', section);
-    $('html, body').animate({
-    scrollTop: $(`#${section}`).offset().top
-}, 1000);
-  }
-
   return (
     <React.Fragment>
       <CssBaseline />
+      <Navbar />
+      {/* Start Banner */}
+      <Paper className={classes.banner}>
+        {
+          <img
+            style={{ display: 'none' }}
+            src="https://i.imgur.com/WBlNmxU.jpg"
+            alt="background"
+          />
+        }
+        <div className={classes.overlay} />
+        <Grid container>
+          <Grid item md={6}>
+            <div className={classes.bannerContent}>
+              <Typography
+                component="h1"
+                variant="h3"
+                color="inherit"
+                style={{fontFamily: 'Raleway, sans-serif'}}
+                gutterBottom
+              >
+                <b>JOSHUA YAN</b>
+              </Typography>
+              <Typography
+                variant="h5"
+                color="inherit"
+                paragraph
+                style={{fontFamily: 'Ubuntu, sans-serif'}}
+              >
+                new york based fullstack web developer
+              </Typography>
+            </div>
+          </Grid>
+        </Grid>
+      </Paper>
+      {/* End banner */}
       <Container maxWidth="lg">
-        <Toolbar
-          component="nav"
-          variant="dense"
-          className={classes.toolbar}
-        >
-          {sections.map(section => (
-            section.name === 'resume' ?
-            <Link
-              color="inherit"
-              noWrap
-              key={section.name}
-              variant="body2"
-              href={section.url}
-              target='new'
-              className={classes.toolbarLink}
-              style={{fontFamily: 'Roboto Mono, monospace'}}
-            >
-              {section.name}
-            </Link>
-            :
-            <Link
-              color="inherit"
-              noWrap
-              key={section.name}
-              variant="body2"
-              onClick={() => scrollTo(section.name)}
-              className={classes.toolbarLink}
-              style={{fontFamily: 'Roboto Mono, monospace'}}
-            >
-              {section.name}
-            </Link>
-          ))}
-        </Toolbar>
         <main>
-          {/* Start Banner */}
-          <Paper className={classes.banner}>
-            {
-              <img
-                style={{ display: 'none' }}
-                src="https://i.imgur.com/WBlNmxU.jpg"
-                alt="background"
-              />
-            }
-            <div className={classes.overlay} />
-            <Grid container>
-              <Grid item md={6}>
-                <div className={classes.bannerContent}>
-                  <Typography
-                    component="h1"
-                    variant="h3"
-                    color="inherit"
-                    style={{fontFamily: 'Raleway, sans-serif'}}
-                    gutterBottom
-                  >
-                    <b>JOSHUA YAN</b>
-                  </Typography>
-                  <Typography
-                    variant="h5"
-                    color="inherit"
-                    paragraph
-                    style={{fontFamily: 'Ubuntu, sans-serif'}}
-                  >
-                    new york based fullstack web developer
-                  </Typography>
-                </div>
-              </Grid>
-            </Grid>
-          </Paper>
-          {/* End banner */}
           <div id='about'>
             <Typography
               variant="h6"
@@ -338,7 +283,7 @@ const Home = () => {
                 className={classes.sidebarSection}
                 style={{fontFamily: 'Roboto Mono, monospace'}}
               >
-                more work
+                work
               </Typography>
               {projects.map(project => (
                 <Link display="block" variant="body1" href={project.url} target='new' key={project.title}>

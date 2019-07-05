@@ -70,7 +70,9 @@ const Experience = () => {
           , Shanghai, CN, 2016 - 2016
         </Typography>
         <Typography variant='body2' color='inherit' component="h2">
-           Benchmarked key competitors through research and cold calls; identified financial figures to understand where competitors were lowering costs, and delivered cost reduction strategy to lower product prices by ~15%. Further researched competitor value chains to identify technology and logistic decisions; delivered plan prioritizing product lines to increase competitiveness. Managed multiple interns assisting in conducting research, compiling info, and building final deck
+           Benchmarked key competitors through research and cold calls; identified financial figures to understand where competitors were lowering costs, and delivered cost reduction strategy to lower product prices by ~15%.
+           Further researched competitor value chains to identify technology and logistic decisions; delivered plan prioritizing product lines to increase competitiveness.
+           Managed multiple interns assisting in conducting research, compiling info, and building final deck
         </Typography>
       </CardContent>
     </div>
