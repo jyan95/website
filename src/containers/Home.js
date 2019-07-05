@@ -55,15 +55,6 @@ const useStyles = makeStyles(theme => ({
   mainGrid: {
     marginTop: theme.spacing(3),
   },
-  card: {
-    display: 'flex',
-  },
-  cardDetails: {
-    flex: 1,
-  },
-  cardMedia: {
-    width: 160,
-  },
   technologiesBox: {
     padding: theme.spacing(2),
     backgroundColor: theme.palette.grey[200],
@@ -165,7 +156,11 @@ const social = [
   {
     page: 'Medium',
     url: 'https://medium.com/@jyan0602'
-  }
+  },
+  {
+    page: 'Gmail',
+    url: 'https://jyan0602@gmail.com'
+  },
 ];
 
 const Home = () => {

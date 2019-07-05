@@ -29,7 +29,7 @@ const Education = () => {
       <Typography className={classes.title} gutterBottom>
         FULLSTACK SOFTWARE DEVELOPMENT IMMERSIVE
       </Typography>
-      <Typography variant='body2' color='secondary' component="h2">
+      <Typography variant='body2' color='inherit' component="h2">
          Flatiron School, New York, NY, 2019
       </Typography>
     </CardContent>
@@ -37,7 +37,7 @@ const Education = () => {
         <Typography className={classes.title} gutterBottom>
           ECONOMICS BA
         </Typography>
-        <Typography variant='body2' color='secondary' component="h2">
+        <Typography variant='body2' color='inherit' component="h2">
            Michigan State University, East Lansing, MI, 2013 - 2017
         </Typography>
       </CardContent>
