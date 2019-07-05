@@ -15,8 +15,13 @@ const useStyles = makeStyles(theme => ({
   },
   image: {
     position: 'relative',
+    zIndex: 0,
     height: 255,
     [theme.breakpoints.down('xs')]: {
+      width: '100% !important', // Overrides inline-style
+      height: 100,
+    },
+    [theme.breakpoints.down('sm')]: {
       width: '100% !important', // Overrides inline-style
       height: 100,
     },
@@ -71,12 +76,14 @@ const useStyles = makeStyles(theme => ({
     transition: theme.transitions.create('opacity'),
   },
   descriptionBox: {
+    position: 'relative',
     padding: theme.spacing(2),
+    zIndex: 10,
     backgroundColor: theme.palette.grey[200],
   },
 }));
 
-const ProjectCard = (props) => {
+const FeaturedCard = (props) => {
   // console.log(props.project.img);
   const classes = useStyles();
 
@@ -86,15 +93,15 @@ const ProjectCard = (props) => {
         <Grid
           container
           direction='row'
-          justify='space-evenly'
+          justify='center'
           alignItems='center'
         >
-          <Grid item>
+          <Grid item xs={12} sm={12} md={5}>
             <ButtonBase
               focusRipple
               className={classes.image}
               focusvisibileclassname={classes.focusVisible}
-              style={{width: 500}}
+              style={{width: 600}}
               href={props.project.url}
               target='new'
             >
@@ -107,11 +114,11 @@ const ProjectCard = (props) => {
               <span className={classes.imageBackdrop} />
             </ButtonBase>
           </Grid>
-          <Grid item xs={8} md={6}>
+          <Grid item xs={12} md={7}>
             <Typography
               gutterBottom
               variant="h4"
-              align='left'
+              align='right'
               style={{fontFamily: 'Raleway, sans-serif'}}
             >
               <b>{props.project.title}</b>
@@ -140,4 +147,4 @@ const ProjectCard = (props) => {
   );
 }
 
-export default ProjectCard;
+export default FeaturedCard;

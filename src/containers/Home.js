@@ -1,16 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import $ from 'jquery';
+import React, { useState } from 'react';
 
 import Navbar from '../components/Navbar';
 import Experience from '../components/Experience';
 import Education from '../components/Education';
-import ProjectCard from '../components/ProjectCard';
+import FeaturedCard from '../components/FeaturedCard';
+import BasicCard from '../components/BasicCard';
 
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import CardContent from '@material-ui/core/CardContent';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -18,8 +15,6 @@ import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 import Divider from '@material-ui/core/Divider';
 import Container from '@material-ui/core/Container';
-import Slide from '@material-ui/core/Slide';
-import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 
 const useStyles = makeStyles(theme => ({
   banner: {
@@ -76,9 +71,11 @@ const about =
     I really enjoy it.
     <br/>
     I also enjoy rock climbing, swimming, and shooting pool.
+    <br/>
+    I list some other things about me below.
   </p>
 
-const latestProjects = [
+const projects = [
   {
     img: 'https://i.imgur.com/NXjFuUZ.png',
     title: 'DealPal',
@@ -87,12 +84,12 @@ const latestProjects = [
     description: 'Mobile optimized web app for locating nearby deals. View and track deals near you based on live deals from Groupon and Restaurant.com. Sign in to follow deals, and add deals to the map to be seen by other users.',
     tech: [
       'React',
-      'Node.js',
+      'JS',
       'Leaflet',
       'Ruby/Rails',
       'DiscountAPI',
       'MapquestAPI',
-      'Material UI'
+      'MaterialUI'
     ]
   },
   {
@@ -103,7 +100,7 @@ const latestProjects = [
     description: 'Web app designed to help with recipe collection and cooking. Users can create kitchens to categorize / collect recipes, and cook when ready. Ingredients and instructions are separated and listed on a task lister page, where users can track to-dos, in progess, and finished items, along with elapsed time for each.',
     tech: [
       'React',
-      'Node.js',
+      'JS',
       'Ruby/Rails',
       'Semantic'
     ]
@@ -115,27 +112,34 @@ const latestProjects = [
     url: 'https://jyan95.github.io/spaceXcookiemonster/',
     description: "A simple 'dodge and collect' game to be played from your desktop browser. Built on JavaScript and HTML Canvas.",
     tech: [
-      'Node.js',
+      'JS',
       'HTML Canvas',
       'Ruby/Rails',
       'Bootstrap'
     ]
   },
-];
-
-const projects = [
   {
-    url: 'https://github.com/jyan95/project-deal-locator',
-    title: 'DealPal',
+    img: '',
+    title: 'Toolbox',
+    width: '30%',
+    url: 'https://jyan95.github.io/project-toolbox/',
+    description: "Web app designed for users to rent and lend tools. Users can list tools available to lend, and rent tools from others.",
+    tech: [
+      'Ruby/Rails',
+      'Bootstrap'
+    ]
   },
   {
-    url: 'https://github.com/jyan95/project-mise-en-plusplus',
-    title: 'mise en ++'
+    img: '',
+    title: "Biddler's Respite",
+    width: '30%',
+    url: 'https://jyan95.github.io/project-biddlers-respite/',
+    description: "A Trivia App to be played from your Command Line.",
+    tech: [
+      'Ruby',
+      'Open Trivia Database API'
+    ]
   },
-  {
-    url: 'https://github.com/jyan95/project-space-x-cookiemonster',
-    title: 'space x cookie monster'
-  }
 ];
 
 const technologies = [
@@ -172,6 +176,7 @@ const social = [
 ];
 
 const Home = () => {
+  // const [showMoreProjects, setShowMore] = useState(false);
   const classes = useStyles();
 
   return (
@@ -188,8 +193,7 @@ const Home = () => {
           />
         }
         <div className={classes.overlay} />
-        <Grid container>
-          <Grid item md={6}>
+
             <div className={classes.bannerContent}>
               <Typography
                 component="h1"
@@ -209,8 +213,7 @@ const Home = () => {
                 new york based fullstack web developer
               </Typography>
             </div>
-          </Grid>
-        </Grid>
+
       </Paper>
       {/* End banner */}
       <Container maxWidth="lg">
@@ -249,8 +252,8 @@ const Home = () => {
               spacing={6}
               alignItems='center'
             >
-              {latestProjects.map(p => (
-                <ProjectCard project={p}/>
+              {projects.slice(0,3).map(p => (
+                <FeaturedCard project={p}/>
               ))}
             </Grid>
             <br/>
@@ -263,6 +266,14 @@ const Home = () => {
               <b>// more work</b>
             </Typography>
             <Divider />
+            <br/>
+            <Grid container spacing={2}>
+              {projects.slice(3,projects.length).map(p => (
+                <Grid item md={4} xs={12}>
+                  <BasicCard project={p}/>
+                </Grid>
+              ))}
+            </Grid>
           </div>
           {/* End latest projects */}
           <Grid container spacing={5} className={classes.mainGrid}>
@@ -292,7 +303,7 @@ const Home = () => {
             {/* End Experience and Education */}
             {/* Side Content */}
             <Grid item xs={12} md={4}>
-              <Paper elevation={1} className={classes.technologiesBox}>
+              <Paper elevation={1} className={classes.technologiesBox} square>
                 <Typography
                   variant="h6"
                   style={{fontFamily: 'Roboto Mono, monospace'}}
@@ -311,19 +322,6 @@ const Home = () => {
                   })}
                 </Typography>
               </Paper>
-              <Typography
-                variant="h6"
-                gutterBottom
-                className={classes.sidebarSection}
-                style={{fontFamily: 'Roboto Mono, monospace'}}
-              >
-                more work
-              </Typography>
-              {projects.map(project => (
-                <Link display="block" variant="body1" href={project.url} target='new' key={project.title}>
-                  {project.title}
-                </Link>
-              ))}
               <Typography
                 variant="h6"
                 gutterBottom
