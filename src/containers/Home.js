@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.grey[800],
     color: theme.palette.common.white,
     marginBottom: theme.spacing(4),
-    backgroundImage: 'url(https://source.unsplash.com/user/erondu)',
+    backgroundImage: 'url(https://i.imgur.com/WBlNmxU.jpg)',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
@@ -221,7 +221,7 @@ const Home = () => {
             {
               <img
                 style={{ display: 'none' }}
-                src="https://source.unsplash.com/user/erondu"
+                src="https://i.imgur.com/WBlNmxU.jpg"
                 alt="background"
               />
             }
