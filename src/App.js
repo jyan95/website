@@ -22,10 +22,10 @@ function App() {
       <footer className={classes.footer}>
         <Container maxWidth="lg">
           <Typography variant="h6" align="center" gutterBottom>
-            Footer
+
           </Typography>
           <Typography variant="subtitle2" align="center" color="textSecondary" component="p">
-            website is w i p
+            Designed and Built by Joshua Yan
           </Typography>
         </Container>
       </footer>
