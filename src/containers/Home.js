@@ -72,7 +72,7 @@ const about =
     <br/>
     I also enjoy rock climbing, swimming, and shooting pool.
     <br/>
-    I list some other things about me below.
+    I list some things I've done below.
   </p>
 
 const projects = [
