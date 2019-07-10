@@ -1,1 +1,1 @@
-This is a repository for my website: joshuayan.com
+repository for https://joshuayan.com
