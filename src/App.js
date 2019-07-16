@@ -1,10 +1,13 @@
 import React from 'react';
 import './App.css';
 import Home from './containers/Home';
+import $ from 'jquery';
 
 import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
+import Typography from '@material-ui/core/Typography';
+import Link from '@material-ui/core/Link';
+
 
 const useStyles = makeStyles(theme => ({
   footer: {
@@ -12,6 +15,7 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(6, 0),
   }
 }))
+
 
 function App() {
   const classes = useStyles();
@@ -21,9 +25,18 @@ function App() {
       <Home/>
       <footer className={classes.footer}>
         <Container maxWidth="lg">
-          <Typography variant="subtitle2" align="center" color="textSecondary" component="p">
-            Designed and Built by Joshua Yan
-          </Typography>
+        <Typography align='center'>
+          <Link
+            color="inherit"
+            noWrap
+            underline='always'
+            variant="body2"
+            onClick={() => $('html,body').animate({scrollTop:0},500)}
+            style={{fontFamily: 'Roboto Mono, monospace'}}
+          >
+            back to top
+          </Link>
+        </Typography>
         </Container>
       </footer>
     </React.Fragment>

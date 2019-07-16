@@ -15,16 +15,8 @@ const useStyles = makeStyles({
     minWidth: 275,
     minHeight: 275
   },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
-  title: {
-    fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
+  footer: {
+    paddingBottom: 12,
   },
 });
 
@@ -33,36 +25,41 @@ const BasicCard = (props) => {
 
   return (
     <Card className={classes.card}>
-      <Grid container direction='row' justify='flex-end'>
-        <CardActions>
-          <IconButton href={props.project.url} target='new'>
-            <img src={GithubIcon} style={{width:25}} alt='Github'/>
-          </IconButton>
-        </CardActions>
-      </Grid>
-      <Grid
-        container
-        direction='column'
-        justify='space-between'
-        alignItems='flex-start'
-      >
-        <CardContent>
-          <Typography variant="h5" component="h2">
-            {props.project.title}
-          </Typography>
-          <Typography variant="body2" component="p">
-            {props.project.description}
-          </Typography>
-          <br/>
-        </CardContent>
-        <CardContent>
-          <Typography variant="body2" component="p" style={{
-            fontFamily: 'Roboto Mono, monospace',
-            fontSize: 11,
-          }}>
-            {props.project.tech.map(t => `${t} `)}
-          </Typography>
-        </CardContent>
+      <Grid container>
+        <Grid item container direction='row' justify='flex-end'>
+          <CardActions>
+            <IconButton href={props.project.url} target='new'>
+              <img src={GithubIcon} style={{width:25}} alt='Github'/>
+            </IconButton>
+          </CardActions>
+        </Grid>
+        <Grid
+          item
+          container
+          direction="column"
+          justify="flex-end"
+          alignItems="flex-start"
+        >
+          <Grid item>
+            <CardContent>
+              <Typography variant="h5" component="h2">
+                {props.project.title}
+              </Typography>
+              <Typography variant="body2" component="p">
+                {props.project.description}
+              </Typography>
+              <br/>
+            </CardContent>
+            <CardContent className={classes.footer}>
+              <Typography variant="body2" component="p" style={{
+                fontFamily: 'Roboto Mono, monospace',
+                fontSize: 11,
+              }}>
+                {props.project.tech.map(t => `${t} `)}
+              </Typography>
+            </CardContent>
+          </Grid>
+        </Grid>
       </Grid>
     </Card>
   );
