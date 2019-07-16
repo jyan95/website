@@ -58,21 +58,20 @@ const useStyles = makeStyles(theme => ({
 
 const about =
   <p>
-    I lived in Michigan.
+    I was born in Michigan
     <br/>
-    I moved to China when I was 10.
+    I moved to China when I was 10
     <br/>
     I moved back to Michigan for university.
     <br/>
-    I now live in New York.
+    I now live in New York
     <br/>
-    I left my job to learn to write code.
+    I left my job to learn to write code
     <br/>
-    I really enjoy it.
+    I really enjoy it
     <br/>
-    I also enjoy rock climbing, swimming, and shooting pool.
+    I also enjoy rock climbing, swimming, and shooting pool
     <br/>
-    I list some things I've done below.
   </p>
 
 const projects = [

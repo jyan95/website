@@ -13,7 +13,7 @@ import GithubIcon from '../assets/github.png';
 const useStyles = makeStyles({
   card: {
     minWidth: 275,
-    minHeight: 260
+    minHeight: 275
   },
   bullet: {
     display: 'inline-block',

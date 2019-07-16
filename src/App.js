@@ -21,9 +21,6 @@ function App() {
       <Home/>
       <footer className={classes.footer}>
         <Container maxWidth="lg">
-          <Typography variant="h6" align="center" gutterBottom>
-
-          </Typography>
           <Typography variant="subtitle2" align="center" color="textSecondary" component="p">
             Designed and Built by Joshua Yan
           </Typography>
