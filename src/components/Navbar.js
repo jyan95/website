@@ -35,6 +35,10 @@ const sections = [
     name: 'resume',
     url: 'https://drive.google.com/file/d/1JXaUU60BelPoo6Kz2DIpdsfQk00NQam_/view?usp=sharing'
   },
+  {
+    name: 'blog',
+    url: 'https://medium.com/@jyan0602',
+  }
 ];
 
 function HideOnScroll(props) {
@@ -79,7 +83,7 @@ const Navbar = (props) => {
             className={classes.toolbar}
           >
             {sections.map(section => (
-              section.name === 'resume' ?
+              section.name == 'resume' || section.name == 'blog' ?
               <Link
                 color="inherit"
                 noWrap

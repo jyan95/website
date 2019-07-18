@@ -15,6 +15,13 @@ import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 import Divider from '@material-ui/core/Divider';
 import Container from '@material-ui/core/Container';
+import IconButton from '@material-ui/core/IconButton';
+
+import GithubIcon from '../assets/github.png';
+import FacebookIcon from '../assets/fb.png';
+import InstagramIcon from '../assets/ig.png';
+import MailIcon from '../assets/mail.png';
+import LinkedInIcon from '../assets/in.png';
 
 const useStyles = makeStyles(theme => ({
   banner: {
@@ -159,6 +166,35 @@ const projects = [
   },
 ];
 
+const social = [
+  {
+    name: 'GitHub',
+    url: 'https://github.com/jyan95',
+    icon: GithubIcon
+  },
+  {
+    name: 'LinkedIn',
+    url: 'https://www.linkedin.com/in/jyan95',
+    icon: LinkedInIcon
+  },
+  {
+    name: 'Gmail',
+    url: 'mailto:jyan0602@gmail.com',
+    icon: MailIcon
+  },
+  {
+    name: 'Facebook',
+    url: 'https://www.facebook.com/jyan95',
+    icon: FacebookIcon
+  },
+  {
+    name: 'Instagram',
+    url: 'https://www.instagram.com/joshuayan_/',
+    icon: InstagramIcon
+  },
+
+];
+
 const technologies = [
   'JavaScript ES6',
   'React',
@@ -171,25 +207,6 @@ const technologies = [
   'AJAX',
   'Material UI / Semantic / Bootstrap',
   'Illustrator'
-]
-
-const social = [
-  {
-    page: 'GitHub',
-    url: 'https://github.com/jyan95'
-  },
-  {
-    page: 'LinkedIn',
-    url: 'https://www.linkedin.com/in/jyan95'
-  },
-  {
-    page: 'Medium',
-    url: 'https://medium.com/@jyan0602'
-  },
-  {
-    page: 'Gmail',
-    url: 'mailto:jyan0602@gmail.com'
-  },
 ];
 
 const Home = () => {
@@ -338,20 +355,21 @@ const Home = () => {
                     )
                   })}
                 </Typography>
+                <br/>
               </Paper>
               <Typography
                 variant="h6"
+                align='right'
                 gutterBottom
                 className={classes.sidebarSection}
                 style={{fontFamily: 'Roboto Mono, monospace'}}
               >
-                social
-              </Typography>
               {social.map(network => (
-                <Link display="block" variant="body1" href={network.url} target='new' key={network.page}>
-                  {network.page}
-                </Link>
+                <IconButton href={network.url} target='new'>
+                  <img src={network.icon} style={{width:30}} alt={network.name}/>
+                </IconButton>
               ))}
+              </Typography>
             </Grid>
             {/* End Side Content */}
           </Grid>

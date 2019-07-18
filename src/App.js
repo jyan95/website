@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Home from './containers/Home';
+import Footer from './components/Footer';
 import $ from 'jquery';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -23,22 +24,7 @@ function App() {
   return (
     <React.Fragment>
       <Home/>
-      <footer className={classes.footer}>
-        <Container maxWidth="lg">
-        <Typography align='center'>
-          <Link
-            color="inherit"
-            noWrap
-            underline='always'
-            variant="body2"
-            onClick={() => $('html,body').animate({scrollTop:0},500)}
-            style={{fontFamily: 'Roboto Mono, monospace'}}
-          >
-            back to top
-          </Link>
-        </Typography>
-        </Container>
-      </footer>
+      <Footer/>
     </React.Fragment>
 
   );
