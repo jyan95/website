@@ -54,7 +54,7 @@ const Experience = () => {
          <Typography variant='body2' color='inherit' component="h2">
          Identified industry trends and qualified experts to meet client specifications, responsible for over 33% of team sales.
          Improved business relations with Tiger Cubs and other investment management firms, grew book of business by ~10%.
-         Consistent top performer, completed fast track to Associate, due for early promotion to Senior Associate
+         Consistent top performer, completed fast track to Associate, due for early promotion to Senior Associate.
           </Typography>
       </CardContent>
       <CardContent>
@@ -68,7 +68,7 @@ const Experience = () => {
           , New York, NY, 2017 - 2018
         </Typography>
         <Typography variant='body2' color='inherit' component="h2">
-           Supported teams on various projects when needed through desk research, cold calling, and data compilation and synthesis; resulting in an average increase in critical findings ~30%, with regular contribution of ~20% of total data
+           Supported teams on various projects when needed through desk research, cold calling, and data compilation and synthesis; resulting in an average increase in critical findings ~30%, with regular contribution of ~20% of total data.
         </Typography>
       </CardContent>
       <CardContent>
@@ -84,7 +84,7 @@ const Experience = () => {
         <Typography variant='body2' color='inherit' component="h2">
            Benchmarked key competitors through research and cold calls; identified financial figures to understand where competitors were lowering costs, and delivered cost reduction strategy to lower product prices by ~15%.
            Further researched competitor value chains to identify technology and logistic decisions; delivered plan prioritizing product lines to increase competitiveness.
-           Managed multiple interns assisting in conducting research, compiling info, and building final deck
+           Managed multiple interns assisting in conducting research, compiling info, and building final deck.
         </Typography>
       </CardContent>
     </div>

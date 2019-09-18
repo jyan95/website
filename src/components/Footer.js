@@ -7,12 +7,6 @@ import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import IconButton from '@material-ui/core/IconButton';
 
-import GithubIcon from '../assets/github.png';
-import FacebookIcon from '../assets/fb.png';
-import InstagramIcon from '../assets/ig.png';
-import MailIcon from '../assets/mail.png';
-import LinkedInIcon from '../assets/in.png';
-
 const useStyles = makeStyles(theme => ({
   footer: {
     marginTop: theme.spacing(2),
