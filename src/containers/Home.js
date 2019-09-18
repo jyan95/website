@@ -105,7 +105,7 @@ const projects = [
     width: '30%',
     url: 'https://miseenplus.herokuapp.com',
     repo: 'https://github.com/jyan95/project-mise-en-plusplus',
-    description: 'Web app designed to help with recipe collection and cooking. Users can create kitchens to categorize / collect recipes, and cook when ready. Ingredients and instructions are separated and listed on a task lister page, where users can track to-dos, in progess, and finished items, along with elapsed time for each. Hosted on Heroku.',
+    description: 'Web app designed to help with recipe collection and cooking. Users can create kitchens to categorize / search and collect recipes, and cook when ready. Ingredients and instructions are separated and listed in to-do style, where users can track prep steps, in progess, and finished items, along with elapsed time for each. Hosted on Heroku.',
     tech: [
       'React',
       'JS',
@@ -119,7 +119,7 @@ const projects = [
     width: '30%',
     url: 'https://jyan95.github.io/spaceXcookiemonster',
     repo: 'https://github.com/jyan95/project-space-x-cookiemonster',
-    description: "A simple 'dodge and collect' game to be played from your desktop browser. Built on JavaScript and HTML Canvas. Frontend hosted on GitHub Pages, backend on Heroku.",
+    description: "A simple 'dodge and collect' game to be played from your desktop browser. Built with vanilla JavaScript and HTML Canvas. Features scoreboard with high scores and persisted player stats. Frontend hosted on GitHub Pages, backend on Heroku.",
     tech: [
       'JS',
       'HTML Canvas',
