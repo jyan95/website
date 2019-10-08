@@ -31,10 +31,21 @@ const Experience = () => {
     <div>
       <CardContent>
         <Typography className={classes.title} gutterBottom>
+          JUNIOR SOFTWARE ENGINEER INTERN
+        </Typography>
+        <Typography className={classes.subtitle} component="h2">
+          <Link href='https://www.kinetik.care' color='inherit' target='new' className={classes.link}>
+            Kinetik
+          </Link>
+          , New York, NY, 2019 - Current
+         </Typography>
+      </CardContent>
+      <CardContent>
+        <Typography className={classes.title} gutterBottom>
           FREELANCE WEB DEVELOPER
         </Typography>
         <Typography className={classes.subtitle} component="h2">
-          Various, Remote, 2019 - Current
+          Various, Remote, 2019 - 2019
          </Typography>
          <Typography variant='body2' color='inherit' component="h2">
           Working on frontend projects with exposure to core products using React and HTML libraries such as Semantic.
