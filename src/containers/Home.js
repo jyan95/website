@@ -174,7 +174,7 @@ const social = [
   },
   {
     name: 'LinkedIn',
-    url: 'https://www.linkedin.com/in/jyan95',
+    url: 'https://www.linkedin.com/in/joshua-yan',
     icon: LinkedInIcon
   },
   {
