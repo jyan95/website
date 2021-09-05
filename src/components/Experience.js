@@ -31,7 +31,7 @@ const Experience = () => {
     <div>
       <CardContent>
         <Typography className={classes.title} gutterBottom>
-          JUNIOR SOFTWARE ENGINEER INTERN
+          SOFTWARE ENGINEER / PROJECT LEAD
         </Typography>
         <Typography className={classes.subtitle} component="h2">
           <Link href='https://www.kinetik.care' color='inherit' target='new' className={classes.link}>
