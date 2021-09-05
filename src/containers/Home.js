@@ -69,7 +69,7 @@ const about =
     <br/>
     I moved to China when I was 10
     <br/>
-    I moved back to Michigan for university.
+    I moved back to Michigan for university
     <br/>
     I now live in New York
     <br/>
@@ -77,7 +77,7 @@ const about =
     <br/>
     I really enjoy it
     <br/>
-    I also enjoy rock climbing, swimming, and shooting pool
+    I also enjoy rock climbing, swimming, and playing piano
     <br/>
   </p>
 
@@ -196,17 +196,15 @@ const social = [
 ];
 
 const technologies = [
-  'JavaScript ES6',
+  'JavaScript',
   'React',
   'Redux',
-  'Ruby on Rails',
-  'Git',
-  'HTML / CSS',
-  'Canvas',
-  'Heroku',
-  'AJAX',
-  'Material UI / Semantic / Bootstrap',
-  'Illustrator'
+  'Node',
+  'Express',
+  'Jest',
+  'MongoDB',
+  'Mongoose',
+  'AWS (SLS, SQS, SNS)
 ];
 
 const Home = () => {
