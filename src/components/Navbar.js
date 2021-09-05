@@ -33,7 +33,7 @@ const sections = [
   },
   {
     name: 'resume',
-    url: 'https://drive.google.com/file/d/1JXaUU60BelPoo6Kz2DIpdsfQk00NQam_/view?usp=sharing'
+    url: 'https://drive.google.com/file/d/1_GmhmY5qFIg1F10gHKAgiIt1ERzZPKQw/view?usp=sharing'
   },
   {
     name: 'blog',
