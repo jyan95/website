@@ -71,13 +71,13 @@ const about =
     <br/>
     I moved back to Michigan for university
     <br/>
-    I now live in New York
+    I moved to New York City to find work
     <br/>
-    I left my job to learn to write code
+    I left my job to learn how to code
     <br/>
-    I really enjoy it
+    I am currently building software at Kinetik
     <br/>
-    I also enjoy rock climbing, swimming, and playing piano
+    I enjoy rock climbing, swimming, and playing piano
     <br/>
   </p>
 
