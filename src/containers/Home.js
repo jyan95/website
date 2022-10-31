@@ -187,17 +187,19 @@ const Home = () => {
               </Paper>
             </Grid>
             {/* End Side Content */}
+            <Grid item xs={12} md={12}>
+              <Typography
+                variant="h6"
+                style={{ fontFamily: "Roboto Mono, monospace" }}
+                gutterBottom
+              >
+                <b style={{ color: "#73d9c8" }}>// education</b>
+              </Typography>
+              <Divider className={classes.divider} />
+              <Education />
+            </Grid>
           </Grid>
         </main>
-        <Typography
-          variant="h6"
-          style={{ fontFamily: "Roboto Mono, monospace" }}
-          gutterBottom
-        >
-          <b style={{ color: "#73d9c8" }}>// education</b>
-        </Typography>
-        <Divider className={classes.divider} />
-        <Education />
       </Container>
     </React.Fragment>
   );
