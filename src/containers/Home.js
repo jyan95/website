@@ -23,10 +23,10 @@ import LinkedInIcon from "../assets/in.png";
 const useStyles = makeStyles((theme) => ({
   banner: {
     position: "relative",
-    backgroundColor: theme.palette.grey[800],
+    backgroundColor: "#24283b",
     color: theme.palette.common.white,
     marginTop: theme.spacing(6),
-    marginBottom: theme.spacing(4),
+    paddingBottom: theme.spacing(4),
     backgroundImage: "url(https://i.imgur.com/WBlNmxU.jpg)",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
@@ -50,13 +50,21 @@ const useStyles = makeStyles((theme) => ({
   },
   mainGrid: {
     marginTop: 0,
+    color: "#b8b4d8",
+    backgroundColor: "#24283b",
   },
   technologiesBox: {
+    color: "#97c566",
     padding: theme.spacing(2),
-    backgroundColor: theme.palette.grey[200],
+    backgroundColor: "#282e42",
+    borderRadius: "6px",
   },
   sidebarSection: {
     marginTop: theme.spacing(3),
+    backgroundColor: "#24283b",
+  },
+  divider: {
+    backgroundColor: "#97c566",
   },
 }));
 
@@ -99,8 +107,8 @@ const social = [
 
 const technologies = [
   "JS (Node, Express, React, Redux, Jest)",
-  "MongoDB (Mongoose)",
   "AWS (SLS, SQS, SNS)",
+  "MongoDB (Mongoose)",
 ];
 
 const Home = () => {
@@ -142,20 +150,26 @@ const Home = () => {
         </div>
       </Paper>
       {/* End banner */}
-      <Container maxWidth="lg">
+      <Container
+        maxWidth="lg"
+        style={{ color: "#b8b4d8", backgroundColor: "#24283b" }}
+      >
         <main>
           <div id="about">
             <Typography
               variant="h6"
-              style={{ fontFamily: "Roboto Mono, monospace" }}
+              style={{
+                paddingTop: "20px",
+                fontFamily: "Roboto Mono, monospace",
+              }}
               gutterBottom
             >
-              <b>// about me</b>
+              <b style={{ color: "#73d9c8" }}>// about</b>
             </Typography>
-            <Divider />
-            <CardContent>
+            <Divider className={classes.divider} />
+            <div style={{ padding: "16px 16px 0px 16px" }}>
               <Typography variant="subtitle1">{about}</Typography>
-            </CardContent>
+            </div>
           </div>
           {/* Latest Projects */}
 
@@ -169,37 +183,37 @@ const Home = () => {
                   gutterBottom
                   style={{ fontFamily: "Roboto Mono, monospace" }}
                 >
-                  <b>// experience</b>
+                  <b style={{ color: "#73d9c8" }}>// experience</b>
                 </Typography>
-                <Divider />
+                <Divider className={classes.divider} />
                 <Experience />
                 <Typography
                   variant="h6"
                   style={{ fontFamily: "Roboto Mono, monospace" }}
                   gutterBottom
                 >
-                  <b>// education</b>
+                  <b style={{ color: "#73d9c8" }}>// education</b>
                 </Typography>
-                <Divider />
+                <Divider className={classes.divider} />
                 <Education />
               </div>
             </Grid>
             {/* End Experience and Education */}
             {/* Side Content */}
             <Grid item xs={12} md={4}>
-              <Paper elevation={1} className={classes.technologiesBox} square>
+              <Paper elevation={0} className={classes.technologiesBox}>
                 <Typography
                   variant="h6"
                   style={{ fontFamily: "Roboto Mono, monospace" }}
                   gutterBottom
                 >
-                  technologies
+                  techstack
                 </Typography>
                 <Typography variant="body2">
                   {technologies.map((t) => {
                     return (
-                      <span key={t}>
-                        + {t}
+                      <span key={t} style={{ color: "#b8b4d8" }}>
+                        - {t}
                         <br />
                       </span>
                     );
@@ -214,8 +228,12 @@ const Home = () => {
                 className={classes.sidebarSection}
                 style={{ fontFamily: "Roboto Mono, monospace" }}
               >
-                {social.map((network) => (
-                  <IconButton href={network.url} target="new">
+                {social.map((network, idx) => (
+                  <IconButton
+                    href={network.url}
+                    target="new"
+                    key={network + idx}
+                  >
                     <img
                       src={network.icon}
                       style={{ width: 30 }}

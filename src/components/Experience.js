@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     fontSize: 16,
+    color: "#f5748d",
   },
   subtitle: {
     fontSize: 14,
@@ -32,7 +33,11 @@ const Experience = () => {
         <Typography className={classes.title} gutterBottom>
           SENIOR ENGINEER / PROJECT LEAD
         </Typography>
-        <Typography className={classes.subtitle} component="h2">
+        <Typography
+          variant="subtitle1"
+          className={classes.subtitle}
+          component="h2"
+        >
           <Link
             href="https://www.kinetik.care"
             color="inherit"
@@ -41,17 +46,22 @@ const Experience = () => {
           >
             Kinetik
           </Link>
-          , New York, NY, 2019 - Current
+          , New York City, 2019 - Current
+        </Typography>
+        <Typography variant="body2" color="inherit" component="h2">
+          Responsible for the development and delivery of software projects for
+          brokers, payers, and providers in the NEMT vertical. Currently
+          managing 5 direct reports.
         </Typography>
       </CardContent>
       <CardContent>
         <Typography className={classes.title} gutterBottom>
           FREELANCE
         </Typography>
-        <Typography className={classes.subtitle} component="h2">
-          Various, Remote, 2019 - 2019
+        <Typography variant="subtitle1" className={classes.subtitle}>
+          Various, Remote, 2019
         </Typography>
-        <Typography variant="body2" color="inherit" component="h2">
+        <Typography variant="body2" color="inherit" component="h3">
           Working on frontend projects with exposure to core products using
           React and HTML libraries such as Semantic. Improving UI / UX, and
           building out new features.
@@ -61,7 +71,11 @@ const Experience = () => {
         <Typography className={classes.title} gutterBottom>
           ASSOCIATE
         </Typography>
-        <Typography className={classes.subtitle} component="h2">
+        <Typography
+          variant="subtitle1"
+          className={classes.subtitle}
+          component="h2"
+        >
           <Link
             href="https://www.colemanrg.com"
             color="inherit"
@@ -70,7 +84,7 @@ const Experience = () => {
           >
             Coleman Research
           </Link>
-          , New York, NY, 2018 - 2019
+          , New York City, 2018 - 2019
         </Typography>
         <Typography variant="body2" color="inherit" component="h2">
           Identified industry trends and qualified experts to meet client
@@ -85,7 +99,11 @@ const Experience = () => {
         <Typography className={classes.title} gutterBottom>
           INTERN
         </Typography>
-        <Typography className={classes.subtitle} component="h2">
+        <Typography
+          variant="subtitle1"
+          className={classes.subtitle}
+          component="h2"
+        >
           <Link
             href="https://www.occstrategy.com/en/"
             color="inherit"
@@ -94,7 +112,7 @@ const Experience = () => {
           >
             OC&C Strategy
           </Link>
-          , New York, NY, 2017 - 2018
+          , New York City, 2017 - 2018
         </Typography>
         <Typography variant="body2" color="inherit" component="h2">
           Supported teams on various projects when needed through desk research,
@@ -107,7 +125,11 @@ const Experience = () => {
         <Typography className={classes.title} gutterBottom>
           INTERN
         </Typography>
-        <Typography className={classes.subtitle} component="h2">
+        <Typography
+          variant="subtitle1"
+          className={classes.subtitle}
+          component="h2"
+        >
           <Link
             href="https://www.rolandberger.com/en/?country=US"
             target="new"
@@ -116,7 +138,7 @@ const Experience = () => {
           >
             Roland Berger
           </Link>
-          , Shanghai, CN, 2016 - 2016
+          , Shanghai, China, 2016
         </Typography>
         <Typography variant="body2" color="inherit" component="h2">
           Benchmarked key competitors through research and cold calls;

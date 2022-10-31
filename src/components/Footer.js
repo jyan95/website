@@ -5,7 +5,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
-import IconButton from "@material-ui/core/IconButton";
 
 const useStyles = makeStyles((theme) => ({
   footer: {
@@ -62,9 +61,9 @@ const Footer = () => {
           </Link>
           <br />
           <br />
-          <Typography align="center" color="inherit" variant="caption">
+          {/* <Typography align="center" color="inherit" variant="caption">
             Joshua Yan 2019
-          </Typography>
+          </Typography> */}
         </Typography>
       </Container>
     </div>

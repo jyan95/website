@@ -16,6 +16,8 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
     overflowX: "auto",
     justifyContent: "right",
+    color: "#9fce6b",
+    backgroundColor: "#24283b",
   },
   toolbarLink: {
     padding: theme.spacing(0),
