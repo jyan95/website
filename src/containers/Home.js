@@ -46,6 +46,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("md")]: {
       padding: theme.spacing(6),
       paddingRight: 0,
+      paddingLeft: 0,
     },
   },
   mainGrid: {
@@ -119,6 +120,7 @@ const Home = () => {
       <CssBaseline />
       <Navbar />
       {/* Start Banner */}
+
       <Paper className={classes.banner}>
         {
           <img
@@ -128,26 +130,27 @@ const Home = () => {
           />
         }
         <div className={classes.overlay} />
-
-        <div className={classes.bannerContent}>
-          <Typography
-            component="h1"
-            variant="h3"
-            color="inherit"
-            style={{ fontFamily: "Roboto Mono, monospace" }}
-            gutterBottom
-          >
-            <b>joshua yan</b>
-          </Typography>
-          <Typography
-            variant="h5"
-            color="inherit"
-            paragraph
-            style={{ fontFamily: "Roboto Mono, monospace" }}
-          >
-            nyc based software engineer
-          </Typography>
-        </div>
+        <Container maxWidth="lg">
+          <div className={classes.bannerContent}>
+            <Typography
+              component="h1"
+              variant="h3"
+              color="inherit"
+              style={{ fontFamily: "Roboto Mono, monospace" }}
+              gutterBottom
+            >
+              <b>joshua yan</b>
+            </Typography>
+            <Typography
+              variant="h5"
+              color="inherit"
+              paragraph
+              style={{ fontFamily: "Roboto Mono, monospace" }}
+            >
+              nyc based software engineer
+            </Typography>
+          </div>
+        </Container>
       </Paper>
       {/* End banner */}
       <Container

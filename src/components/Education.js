@@ -30,7 +30,7 @@ const Education = () => {
           FULLSTACK SOFTWARE DEVELOPMENT IMMERSIVE
         </Typography>
         <Typography variant="body2" color="inherit" component="h2">
-          Flatiron School, New York City, 2019
+          Flatiron School, New York City, NY, 2019
         </Typography>
       </CardContent>
       <CardContent>
