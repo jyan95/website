@@ -130,7 +130,7 @@ const Home = () => {
           />
         }
         <div className={classes.overlay} />
-        <Container maxWidth="lg">
+        <Container maxWidth="md">
           <div className={classes.bannerContent}>
             <Typography
               component="h1"
@@ -154,7 +154,7 @@ const Home = () => {
       </Paper>
       {/* End banner */}
       <Container
-        maxWidth="lg"
+        maxWidth="md"
         style={{ color: "#b8b4d8", backgroundColor: "#24283b" }}
       >
         <main>
