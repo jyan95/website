@@ -1,85 +1,84 @@
-import React from 'react';
+import React from "react";
 
-import { makeStyles } from '@material-ui/core/styles';
-import ButtonBase from '@material-ui/core/ButtonBase';
-import IconButton from '@material-ui/core/IconButton';
-import GithubIcon from '../assets/github.png';
-import LaunchIcon from '@material-ui/icons/Launch'
-import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
+import { makeStyles } from "@material-ui/core/styles";
+import ButtonBase from "@material-ui/core/ButtonBase";
+import IconButton from "@material-ui/core/IconButton";
+import GithubIcon from "../assets/github.png";
+import LaunchIcon from "@material-ui/icons/Launch";
+import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
+import CardContent from "@material-ui/core/CardContent";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    flexGrow: 1
+    display: "flex",
+    flexWrap: "wrap",
+    flexGrow: 1,
   },
   image: {
-    position: 'relative',
+    position: "relative",
     zIndex: 0,
     height: 255,
-    [theme.breakpoints.down('xs')]: {
-      width: '100% !important', // Overrides inline-style
+    [theme.breakpoints.down("xs")]: {
+      width: "100% !important", // Overrides inline-style
       height: 100,
     },
-    [theme.breakpoints.down('sm')]: {
-      width: '100% !important', // Overrides inline-style
+    [theme.breakpoints.down("sm")]: {
+      width: "100% !important", // Overrides inline-style
       height: 100,
     },
-    '&:hover, &$focusVisible': {
+    "&:hover, &$focusVisible": {
       zIndex: 1,
-      '& $imageBackdrop': {
+      "& $imageBackdrop": {
         opacity: 0.1,
       },
-      '& $imageMarked': {
+      "& $imageMarked": {
         opacity: 0,
       },
     },
   },
   focusVisible: {},
   imageButton: {
-    position: 'absolute',
+    position: "absolute",
     left: 0,
     right: 0,
     top: 0,
     bottom: 0,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
     color: theme.palette.common.white,
   },
   imageSrc: {
-    position: 'absolute',
+    position: "absolute",
     left: 0,
     right: 0,
     top: 0,
     bottom: 0,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center 40%',
+    backgroundSize: "cover",
+    backgroundPosition: "center 40%",
   },
   imageBackdrop: {
-    position: 'absolute',
+    position: "absolute",
     left: 0,
     right: 0,
     top: 0,
     bottom: 0,
     backgroundColor: theme.palette.common.black,
     opacity: 0.4,
-    transition: theme.transitions.create('opacity'),
+    transition: theme.transitions.create("opacity"),
   },
   imageMarked: {
-    color: 'white',
+    color: "white",
     opacity: 0.7,
     height: 18,
     width: 18,
-    position: 'absolute',
-    transition: theme.transitions.create('opacity'),
+    position: "absolute",
+    transition: theme.transitions.create("opacity"),
   },
   descriptionBox: {
-    position: 'relative',
+    position: "relative",
     padding: theme.spacing(2),
     zIndex: 10,
     backgroundColor: theme.palette.grey[200],
@@ -93,25 +92,20 @@ const FeaturedCard = (props) => {
   return (
     <div className={classes.root}>
       <CardContent>
-        <Grid
-          container
-          direction='row'
-          justify='center'
-          alignItems='center'
-        >
+        <Grid container direction="row" justify="center" alignItems="center">
           <Grid item xs={12} sm={12} md={5}>
             <ButtonBase
               focusRipple
               className={classes.image}
               focusvisibileclassname={classes.focusVisible}
-              style={{width: 600}}
+              style={{ width: 600 }}
               href={props.project.url}
-              target='new'
+              target="new"
             >
               <span
                 className={classes.imageSrc}
                 style={{
-                  backgroundImage:`url(${props.project.img})`
+                  backgroundImage: `url(${props.project.img})`,
                 }}
               />
               <span className={classes.imageBackdrop} />
@@ -121,8 +115,8 @@ const FeaturedCard = (props) => {
             <Typography
               gutterBottom
               variant="h5"
-              align='right'
-              style={{fontFamily: 'Raleway, sans-serif'}}
+              align="right"
+              style={{ fontFamily: "Raleway, sans-serif" }}
             >
               <b>{props.project.title}</b>
             </Typography>
@@ -131,24 +125,24 @@ const FeaturedCard = (props) => {
                 {props.project.description}
               </Typography>
             </Paper>
-            <br/>
+            <br />
             <Typography
               variant="body2"
               color="textSecondary"
-              align='right'
+              align="right"
               style={{
-                fontFamily: 'Roboto Mono, monospace',
+                fontFamily: "Roboto Mono, monospace",
                 fontSize: 11,
               }}
             >
-              {props.project.tech.map(t => `${t} `)}
+              {props.project.tech.map((t) => `${t} `)}
             </Typography>
-            <Grid item align='right'>
-              <IconButton href={props.project.url} target='new'>
-                <LaunchIcon/>
+            <Grid item align="right">
+              <IconButton href={props.project.url} target="new">
+                <LaunchIcon />
               </IconButton>
-              <IconButton href={props.project.repo} target='new'>
-                <img src={GithubIcon} style={{width:22}} alt='Github'/>
+              <IconButton href={props.project.repo} target="new">
+                <img src={GithubIcon} style={{ width: 22 }} alt="Github" />
               </IconButton>
             </Grid>
           </Grid>
@@ -156,6 +150,6 @@ const FeaturedCard = (props) => {
       </CardContent>
     </div>
   );
-}
+};
 
 export default FeaturedCard;
