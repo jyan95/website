@@ -7,7 +7,7 @@ import Education from "../components/Education";
 
 import { makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import CardContent from "@material-ui/core/CardContent";
+
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
@@ -15,10 +15,10 @@ import Divider from "@material-ui/core/Divider";
 import Container from "@material-ui/core/Container";
 import IconButton from "@material-ui/core/IconButton";
 
-import GithubIcon from "../assets/github.png";
-import InstagramIcon from "../assets/ig.png";
-import MailIcon from "../assets/mail.png";
-import LinkedInIcon from "../assets/in.png";
+import GithubIcon from "../assets/github.svg";
+import InstagramIcon from "../assets/ig.svg";
+import MailIcon from "../assets/gmail.svg";
+import LinkedInIcon from "../assets/in.svg";
 
 const useStyles = makeStyles((theme) => ({
   banner: {
@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     bottom: 0,
     right: 0,
     left: 0,
-    backgroundColor: "rgba(0,0,0,.3)",
+    backgroundColor: "rgba(0,0,0,.4)",
   },
   bannerContent: {
     position: "relative",
@@ -134,18 +134,18 @@ const Home = () => {
             component="h1"
             variant="h3"
             color="inherit"
-            style={{ fontFamily: "Raleway, sans-serif" }}
+            style={{ fontFamily: "Roboto Mono, monospace" }}
             gutterBottom
           >
-            <b>JOSHUA YAN</b>
+            <b>joshua yan</b>
           </Typography>
           <Typography
             variant="h5"
             color="inherit"
             paragraph
-            style={{ fontFamily: "Ubuntu, sans-serif" }}
+            style={{ fontFamily: "Roboto Mono, monospace" }}
           >
-            new york based fullstack web developer
+            nyc based software engineer
           </Typography>
         </div>
       </Paper>
