@@ -13,12 +13,6 @@ import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Divider from "@material-ui/core/Divider";
 import Container from "@material-ui/core/Container";
-import IconButton from "@material-ui/core/IconButton";
-
-import GithubIcon from "../assets/github.svg";
-import InstagramIcon from "../assets/ig.svg";
-import MailIcon from "../assets/gmail.svg";
-import LinkedInIcon from "../assets/in.svg";
 
 const useStyles = makeStyles((theme) => ({
   banner: {
@@ -85,29 +79,6 @@ const about = (
     web3.
   </p>
 );
-
-const social = [
-  {
-    name: "GitHub",
-    url: "https://github.com/jyan95",
-    icon: GithubIcon,
-  },
-  {
-    name: "LinkedIn",
-    url: "https://www.linkedin.com/in/joshua-yan",
-    icon: LinkedInIcon,
-  },
-  {
-    name: "Gmail",
-    url: "mailto:jyan0602@gmail.com",
-    icon: MailIcon,
-  },
-  {
-    name: "Instagram",
-    url: "https://www.instagram.com/joshuayan_/",
-    icon: InstagramIcon,
-  },
-];
 
 const technologies = [
   "JS (Node, Express, React, Redux, Jest)",
@@ -177,9 +148,6 @@ const Home = () => {
               <Typography variant="subtitle1">{about}</Typography>
             </div>
           </div>
-          {/* Latest Projects */}
-
-          {/* End latest projects */}
           <Grid container spacing={5} className={classes.mainGrid}>
             {/* Experience and Education */}
             <Grid item xs={12} md={8}>
@@ -193,18 +161,8 @@ const Home = () => {
                 </Typography>
                 <Divider className={classes.divider} />
                 <Experience />
-                <Typography
-                  variant="h6"
-                  style={{ fontFamily: "Roboto Mono, monospace" }}
-                  gutterBottom
-                >
-                  <b style={{ color: "#73d9c8" }}>// education</b>
-                </Typography>
-                <Divider className={classes.divider} />
-                <Education />
               </div>
             </Grid>
-            {/* End Experience and Education */}
             {/* Side Content */}
             <Grid item xs={12} md={4}>
               <Paper elevation={0} className={classes.technologiesBox}>
@@ -227,31 +185,19 @@ const Home = () => {
                 </Typography>
                 <br />
               </Paper>
-              <Typography
-                variant="h6"
-                align="right"
-                gutterBottom
-                className={classes.sidebarSection}
-                style={{ fontFamily: "Roboto Mono, monospace" }}
-              >
-                {social.map((network, idx) => (
-                  <IconButton
-                    href={network.url}
-                    target="new"
-                    key={network + idx}
-                  >
-                    <img
-                      src={network.icon}
-                      style={{ width: 30 }}
-                      alt={network.name}
-                    />
-                  </IconButton>
-                ))}
-              </Typography>
             </Grid>
             {/* End Side Content */}
           </Grid>
         </main>
+        <Typography
+          variant="h6"
+          style={{ fontFamily: "Roboto Mono, monospace" }}
+          gutterBottom
+        >
+          <b style={{ color: "#73d9c8" }}>// education</b>
+        </Typography>
+        <Divider className={classes.divider} />
+        <Education />
       </Container>
     </React.Fragment>
   );

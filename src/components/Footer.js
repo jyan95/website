@@ -1,10 +1,14 @@
 import React from "react";
-import $ from "jquery";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
-import Link from "@material-ui/core/Link";
+import IconButton from "@material-ui/core/IconButton";
+
+import GithubIcon from "../assets/github.svg";
+import InstagramIcon from "../assets/ig.svg";
+import MailIcon from "../assets/gmail.svg";
+import LinkedInIcon from "../assets/in.svg";
 
 const useStyles = makeStyles((theme) => ({
   footer: {
@@ -13,34 +17,28 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// const social = [
-//   {
-//     name: 'GitHub',
-//     url: 'https://github.com/jyan95',
-//     icon: GithubIcon
-//   },
-//   {
-//     name: 'LinkedIn',
-//     url: 'https://www.linkedin.com/in/jyan95',
-//     icon: LinkedInIcon
-//   },
-//   {
-//     name: 'Gmail',
-//     url: 'mailto:jyan0602@gmail.com',
-//     icon: MailIcon
-//   },
-//   {
-//     name: 'Facebook',
-//     url: 'https://www.facebook.com/jyan95',
-//     icon: FacebookIcon
-//   },
-//   {
-//     name: 'Instagram',
-//     url: 'https://www.instagram.com/joshuayan_/',
-//     icon: InstagramIcon
-//   },
-//
-// ];
+const social = [
+  {
+    name: "GitHub",
+    url: "https://github.com/jyan95",
+    icon: GithubIcon,
+  },
+  {
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/joshua-yan",
+    icon: LinkedInIcon,
+  },
+  {
+    name: "Gmail",
+    url: "mailto:jyan0602@gmail.com",
+    icon: MailIcon,
+  },
+  {
+    name: "Instagram",
+    url: "https://www.instagram.com/joshuayan_/",
+    icon: InstagramIcon,
+  },
+];
 
 const Footer = () => {
   const classes = useStyles();
@@ -48,22 +46,22 @@ const Footer = () => {
   return (
     <div className={classes.footer}>
       <Container maxWidth="md">
-        <Typography align="center">
-          <Link
-            color="inherit"
-            noWrap
-            underline="always"
-            variant="body2"
-            onClick={() => $("html,body").animate({ scrollTop: 0 }, 500)}
-            style={{ fontFamily: "Roboto Mono, monospace", cursor: "pointer" }}
-          >
-            back to top
-          </Link>
-          <br />
-          <br />
-          {/* <Typography align="center" color="inherit" variant="caption">
-            Joshua Yan 2019
-          </Typography> */}
+        <Typography
+          variant="h6"
+          align="center"
+          gutterBottom
+          className={classes.sidebarSection}
+          style={{ fontFamily: "Roboto Mono, monospace" }}
+        >
+          {social.map((network, idx) => (
+            <IconButton href={network.url} target="new" key={network + idx}>
+              <img
+                src={network.icon}
+                style={{ width: 30 }}
+                alt={network.name}
+              />
+            </IconButton>
+          ))}
         </Typography>
       </Container>
     </div>
