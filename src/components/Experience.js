@@ -62,9 +62,9 @@ const Experience = () => {
           Various, Remote, 2019
         </Typography>
         <Typography variant="body2" color="inherit" component="h3">
-          Working on frontend projects with exposure to core products using
-          React and HTML libraries such as Semantic. Improving UI / UX, and
-          building out new features.
+          Working on frontend projects with exposure to core features using
+          React and HTML libraries such as Semantic. Focused on improving UI /
+          UX, and building out new features.
         </Typography>
       </CardContent>
       <CardContent>
@@ -88,11 +88,10 @@ const Experience = () => {
         </Typography>
         <Typography variant="body2" color="inherit" component="h2">
           Identified industry trends and qualified experts to meet client
-          specifications, responsible for over 33% of team sales. Improved
-          business relations with Tiger Cubs and other investment management
-          firms, grew book of business by ~10%. Consistent top performer,
-          completed fast track to Associate, due for early promotion to Senior
-          Associate.
+          specifications, responsible for over 33% of team sales. Responsible
+          for business relations with Tiger Cubs among other investment
+          management firms, grew book of business by ~10%. Consistent top
+          performer.
         </Typography>
       </CardContent>
       <CardContent>
@@ -115,10 +114,10 @@ const Experience = () => {
           , New York City, 2017 - 2018
         </Typography>
         <Typography variant="body2" color="inherit" component="h2">
-          Supported teams on various projects when needed through desk research,
-          cold calling, and data compilation and synthesis; resulting in an
-          average increase in critical findings ~30%, with regular contribution
-          of ~20% of total data.
+          Supported teams on various projects needed through research, cold
+          calling, and data synthesis; resulting in an average increase in
+          critical findings ~30%, with regular contribution of ~20% of total
+          data.
         </Typography>
       </CardContent>
       <CardContent>

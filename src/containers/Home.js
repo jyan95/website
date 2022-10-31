@@ -71,8 +71,8 @@ const about = (
     <br />
     I moved back to Michigan for undergrad, and to New York City shortly after.
     <br />
-    I walked dogs and worked a !@#$ job for a bit, then took myself to a code
-    camp.
+    I walked dogs and worked a dead-end job for a bit, then took myself to a
+    code camp.
     <br />
     I currently work at Kinetik as a Senior Engineer / Project Lead.
     <br />I spend most of my free time climbing, swimming, and learning about
