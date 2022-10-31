@@ -1,44 +1,43 @@
-import React from 'react';
-import $ from 'jquery';
+import React from "react";
+import $ from "jquery";
 
-import { makeStyles } from '@material-ui/core/styles';
-import useScrollTrigger from '@material-ui/core/useScrollTrigger';
-import PropTypes from 'prop-types';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Link from '@material-ui/core/Link';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Container from '@material-ui/core/Container';
-import Slide from '@material-ui/core/Slide';
+import { makeStyles } from "@material-ui/core/styles";
+import useScrollTrigger from "@material-ui/core/useScrollTrigger";
+import PropTypes from "prop-types";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Link from "@material-ui/core/Link";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Slide from "@material-ui/core/Slide";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   toolbar: {
     borderBottom: `1px solid ${theme.palette.divider}`,
     flex: 1,
-    overflowX: 'auto',
-    justifyContent: 'right',
+    overflowX: "auto",
+    justifyContent: "right",
   },
   toolbarLink: {
-    padding: theme.spacing(1),
+    padding: theme.spacing(0),
     flexShrink: 0,
   },
 }));
 
 const sections = [
+  // {
+  //   name: "work",
+  // },
+  // {
+  //   name: "experience",
+  // },
   {
-    name: 'work',
+    name: "resume",
+    url: "https://drive.google.com/file/d/1_GmhmY5qFIg1F10gHKAgiIt1ERzZPKQw/view?usp=sharing",
   },
-  {
-    name: 'experience',
-  },
-  {
-    name: 'resume',
-    url: 'https://drive.google.com/file/d/1_GmhmY5qFIg1F10gHKAgiIt1ERzZPKQw/view?usp=sharing'
-  },
-  {
-    name: 'blog',
-    url: 'https://medium.com/@jyan0602',
-  }
+  // {
+  //   name: "blog",
+  //   url: "https://medium.com/@jyan0602",
+  // },
 ];
 
 function HideOnScroll(props) {
@@ -63,10 +62,13 @@ HideOnScroll.propTypes = {
 };
 
 function scrollTo(section) {
-  // console.log('scrolling to', section);
-  $('html, body').animate({
-    scrollTop: $(`#${section}`).offset().top
-  }, 1000);
+  console.log("scrolling to", section);
+  $("html, body").animate(
+    {
+      scrollTop: $(`#${section}`).offset().top,
+    },
+    1000
+  );
 }
 
 const Navbar = (props) => {
@@ -76,45 +78,50 @@ const Navbar = (props) => {
     <React.Fragment>
       <CssBaseline />
       <HideOnScroll {...props}>
-        <AppBar color='default'>
-          <Toolbar
-            component="nav"
-            variant="dense"
-            className={classes.toolbar}
-          >
-            {sections.map(section => (
-              section.name == 'resume' || section.name == 'blog' ?
-              <Link
-                color="inherit"
-                noWrap
-                underline='always'
-                key={section.name}
-                variant="body2"
-                href={section.url}
-                target='new'
-                className={classes.toolbarLink}
-                style={{fontFamily: 'Roboto Mono, monospace'}}
-              >
-                {section.name}
-              </Link>
-              :
-              <Link
-                color="inherit"
-                noWrap
-                key={section.name}
-                variant="body2"
-                onClick={() => scrollTo(section.name)}
-                className={classes.toolbarLink}
-                style={{fontFamily: 'Roboto Mono, monospace'}}
-              >
-                {section.name}
-              </Link>
-            ))}
+        <AppBar color="default">
+          <Toolbar component="nav" variant="dense" className={classes.toolbar}>
+            {sections.map((section) =>
+              section.name === "resume" || section.name === "blog" ? (
+                <Link
+                  id={section.name}
+                  color="inherit"
+                  noWrap
+                  underline="always"
+                  key={section.name}
+                  variant="body2"
+                  href={section.url}
+                  target="new"
+                  className={classes.toolbarLink}
+                  style={{
+                    fontFamily: "Roboto Mono, monospace",
+                    cursor: "pointer",
+                  }}
+                >
+                  {section.name}
+                </Link>
+              ) : (
+                <Link
+                  id={section.name}
+                  color="inherit"
+                  noWrap
+                  key={section.name}
+                  variant="body2"
+                  onClick={() => scrollTo(section.name)}
+                  className={classes.toolbarLink}
+                  style={{
+                    fontFamily: "Roboto Mono, monospace",
+                    cursor: "pointer",
+                  }}
+                >
+                  {section.name}
+                </Link>
+              )
+            )}
           </Toolbar>
         </AppBar>
       </HideOnScroll>
     </React.Fragment>
   );
-}
+};
 
 export default Navbar;
