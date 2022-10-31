@@ -73,13 +73,16 @@ const about = (
   <p>
     I was born in Michigan, and moved to China when I was 10.
     <br />
-    I went to international schools in Wuxi, Suzhou, and Shanghai.
+    I attended international schools in Wuxi, Suzhou, and Shanghai.
     <br />
-    I moved back to Michigan for undergrad, and moved to New York shortly after.
+    I moved back to Michigan for undergrad, and to New York City shortly after.
+    <br />
+    I walked dogs and worked a !@#$ job for a bit, then took myself to a code
+    camp.
     <br />
     I currently work at Kinetik as a Senior Engineer / Project Lead.
-    <br />I spend most of my free time climbing, swimming, or learning about
-    web3
+    <br />I spend most of my free time climbing, swimming, and learning about
+    web3.
   </p>
 );
 
