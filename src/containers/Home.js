@@ -12,23 +12,27 @@ const useStyles = makeStyles((theme) => ({
   gridItem: {
     marginTop: "48px",
   },
-  summary: { lineHeight: "1.4", fontSize: "4.5vw", fontWeight: 600 },
+  summary: {
+    lineHeight: "1.4",
+    fontSize: "4.5vw",
+    fontWeight: 600,
+  },
   italics: {
     marginTop: theme.spacing(3),
   },
   focus: {
-    marginTop: "48px",
+    marginTop: "4rem",
     lineHeight: "2.5",
-    fontWeight: 600,
-    fontSize: "3.3vw",
+    fontWeight: 500,
+    fontSize: "calc(16px + 2vw)",
   },
   projects: {
     lineHeight: 1.5,
     fontWeight: 500,
-    fontSize: "28px",
+    fontSize: "calc(12px + 1.5vw)",
     marginTop: "24px",
   },
-  philo: {},
+  philo: { marginBottom: "4rem" },
   divider: {},
 }));
 
@@ -42,7 +46,11 @@ const Home = () => {
         <Grid container>
           <Grid item xs={12} md={10}>
             <div style={{ padding: "56px 16px 16px 56px" }} id="title">
-              <Typography style={{ fontSize: "2rem" }}>Joshua Yan</Typography>
+              <Typography
+                style={{ fontSize: "calc(12px + 1.5vw)", fontWeight: 600 }}
+              >
+                Joshua Yan
+              </Typography>
             </div>
           </Grid>
         </Grid>
@@ -59,7 +67,7 @@ const Home = () => {
           </Grid>
         </Grid>
 
-        <Grid container spacing={2} className={classes.gridItem}>
+        <Grid container className={classes.gridItem}>
           {/* Current areas of focus */}
           <Grid item xs={4} md={4}></Grid>
           <Grid item xs={8} md={8}>
@@ -73,11 +81,11 @@ const Home = () => {
               UI/UX, QA
             </Typography>
           </Grid>
-          <Grid container spacing={2} className={classes.gridItem}>
+          <Grid container className={classes.gridItem}>
             {/* Current areas of focus */}
             {/* Projects */}
             <Grid item xs={4} md={4}></Grid>
-            <Grid item xs={8} md={7}>
+            <Grid item xs={7} md={7}>
               <Typography className={classes.projects} gutterBottom>
                 A trip scheduling platform for health systems.
               </Typography>
@@ -94,9 +102,9 @@ const Home = () => {
               </Typography>
             </Grid>
           </Grid>
-          <Grid container spacing={2} className={classes.gridItem}>
-            <Grid item xs={2} md={4}></Grid>
-            <Grid item xs={10} md={6}>
+          <Grid container className={classes.gridItem}>
+            <Grid item xs={4} md={4}></Grid>
+            <Grid item xs={7} md={6}>
               <Typography className={classes.philo} gutterBottom>
                 Embracing individuality and autonomy, personal growth lies at
                 the forefront of my leadership philosophy. I empower team
