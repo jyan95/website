@@ -3,7 +3,6 @@ import React from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Divider from "@material-ui/core/Divider";
 
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
@@ -11,29 +10,38 @@ import Grid from "@material-ui/core/Grid";
 const useStyles = makeStyles((theme) => ({
   gridItem: {
     marginTop: "48px",
+    marginBottom: "4rem",
   },
   summary: {
     lineHeight: "1.4",
-    fontSize: "4.5vw",
+    fontSize: "calc(16px + 3vw)",
     fontWeight: 600,
+    marginBottom: "4rem",
   },
   italics: {
-    marginTop: theme.spacing(3),
+    fontStyle: "italic",
+    marginLeft: "56px",
+    paddingRight: "16px",
   },
   focus: {
-    marginTop: "4rem",
-    lineHeight: "2.5",
     fontWeight: 500,
     fontSize: "calc(16px + 2vw)",
+    marginBottom: "4rem",
+    marginLeft: "56px",
   },
   projects: {
-    lineHeight: 1.5,
     fontWeight: 500,
     fontSize: "calc(12px + 1.5vw)",
-    marginTop: "24px",
+    marginBottom: "2rem",
+    marginLeft: "56px",
   },
-  philo: { marginBottom: "4rem" },
-  divider: {},
+  philo: { lineHeight: 2, marginLeft: "56px" },
+  line: {
+    marginTop: "3rem",
+    borderBottom: "1px solid #D6DB2D",
+    width: "36px",
+    marginBottom: "2rem",
+  },
 }));
 
 const Home = () => {
@@ -69,45 +77,59 @@ const Home = () => {
 
         <Grid container className={classes.gridItem}>
           {/* Current areas of focus */}
-          <Grid item xs={4} md={4}></Grid>
-          <Grid item xs={8} md={8}>
+          <Grid item xs={12} md={3}>
+            <Typography className={classes.italics} gutterBottom>
+              A few areas I work on
+              <div className={classes.line} />
+            </Typography>
+          </Grid>
+          <Grid item xs={10} md={8}>
             <Typography variant="h3" className={classes.focus} gutterBottom>
               Project management
-              <br />
+            </Typography>
+            <Typography variant="h3" className={classes.focus} gutterBottom>
               System Design
-              <br />
+            </Typography>
+            <Typography variant="h3" className={classes.focus} gutterBottom>
               Code Review
-              <br />
+            </Typography>
+            <Typography variant="h3" className={classes.focus} gutterBottom>
               UI/UX, QA
             </Typography>
           </Grid>
           <Grid container className={classes.gridItem}>
             {/* Current areas of focus */}
             {/* Projects */}
-            <Grid item xs={4} md={4}></Grid>
-            <Grid item xs={7} md={7}>
+            <Grid item xs={12} md={3}>
+              <Typography className={classes.italics} gutterBottom>
+                Recent Projects
+                <div className={classes.line} />
+              </Typography>
+            </Grid>
+            <Grid item xs={10} md={7}>
               <Typography className={classes.projects} gutterBottom>
                 A trip scheduling platform for health systems.
               </Typography>
               <Typography className={classes.projects} gutterBottom>
                 A trip dispatch platform for transportation networks.
               </Typography>
-              <Typography
-                className={classes.projects}
-                style={{ lineHeight: 1.5 }}
-                gutterBottom
-              >
+              <Typography className={classes.projects} gutterBottom>
                 A claims generation, attestation, and submission platform for
                 transportation providers.
               </Typography>
             </Grid>
           </Grid>
           <Grid container className={classes.gridItem}>
-            <Grid item xs={4} md={4}></Grid>
-            <Grid item xs={7} md={6}>
+            <Grid item xs={12} md={3}>
+              <Typography className={classes.italics} gutterBottom>
+                Management Philosophy
+                <div className={classes.line} />
+              </Typography>
+            </Grid>
+            <Grid item xs={10} md={6}>
               <Typography className={classes.philo} gutterBottom>
                 Embracing individuality and autonomy, personal growth lies at
-                the forefront of my leadership philosophy. I empower team
+                the forefront of my management philosophy. I empower team
                 members to identify and leverage their unique strengths,
                 cultivating ownership and initiative toward shared goals.
               </Typography>
