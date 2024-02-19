@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
   philo: { lineHeight: 2, marginLeft: "56px" },
   line: {
     marginTop: "3rem",
-    borderBottom: "1px solid #D6DB2D",
+    borderBottom: "1px solid #013220",
     width: "36px",
     marginBottom: "2rem",
   },

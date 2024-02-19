@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   footer: {
     marginTop: theme.spacing(2),
     padding: "32px 56px",
-    backgroundColor: "#1C2C1B",
+    backgroundColor: "#013220",
   },
 }));
 
@@ -52,13 +52,13 @@ const Footer = () => {
           <Typography
             variant="h6"
             align="left"
+            style={{ color: "#D6DB2D" }}
             gutterBottom
-            className={classes.sidebarSection}
           >
             <Link
               href="https://drive.google.com/file/d/1vFmotEK31wMtvMez96aF1V3MUfqCUIzu/view?usp=drive_link"
-              color="inherit"
               underline="always"
+              color="inherit"
               target="new"
             >
               resume
