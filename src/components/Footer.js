@@ -15,6 +15,10 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(2),
     padding: "32px 56px",
     backgroundColor: "#313235",
+    [theme.breakpoints.down("xs")]: {
+      paddingLeft: "36px",
+      paddingRight: "36px",
+    },
   },
 }));
 

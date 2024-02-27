@@ -8,6 +8,11 @@ import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles((theme) => ({
+  container: {
+    paddingTop: "56px",
+    paddingLeft: "56px",
+    [theme.breakpoints.down("xs")]: { paddingTop: "36px", paddingLeft: "36px" },
+  },
   gridItem: {
     marginTop: "48px",
     marginBottom: "4rem",
@@ -20,22 +25,19 @@ const useStyles = makeStyles((theme) => ({
   },
   italics: {
     fontStyle: "italic",
-    marginLeft: "56px",
     paddingRight: "16px",
   },
   focus: {
     fontWeight: 500,
     fontSize: "calc(16px + 2vw)",
     marginBottom: "4rem",
-    marginLeft: "56px",
   },
   projects: {
     fontWeight: 500,
     fontSize: "calc(12px + 1.5vw)",
     marginBottom: "2rem",
-    marginLeft: "56px",
   },
-  philo: { lineHeight: 2, marginLeft: "56px" },
+  philo: { lineHeight: 2 },
   line: {
     marginTop: "3rem",
     borderBottom: "1px solid #D6DB2D",
@@ -50,10 +52,10 @@ const Home = () => {
   return (
     <React.Fragment>
       <CssBaseline />
-      <Grid container>
+      <Grid container className={classes.container}>
         <Grid container>
           <Grid item xs={12} md={10}>
-            <div style={{ padding: "56px 16px 16px 56px" }} id="title">
+            <div style={{ padding: "0 16px 16px 0" }} id="title">
               <Typography
                 style={{ fontSize: "calc(12px + 1.5vw)", fontWeight: 600 }}
               >
@@ -63,8 +65,8 @@ const Home = () => {
           </Grid>
         </Grid>
         <Grid container>
-          <Grid item xs={12} md={10}>
-            <div style={{ padding: "64px 16px 0px 56px" }} id="summary">
+          <Grid item xs={10} md={10}>
+            <div style={{ padding: "64px 16px 0 0" }} id="summary">
               <Typography className={classes.summary}>
                 Builder, swimmer, pianist, climber.
                 <br />
