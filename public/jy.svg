@@ -1,0 +1,13 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="64" height="64" fill="#111827"/> <style>
+    /* Default (light mode) terminal theme */
+    .text-color { fill: #4ADE80; } /* Green-400 */
+    /* Dark mode (hacker theme) terminal theme */
+    @media (prefers-color-scheme: dark) {
+      .text-color { fill: #22D3EE; } /* Cyan-400 */
+    }
+    /* Fallback for environments without prefers-color-scheme media query support */
+    html.dark .text-color { fill: #22D3EE; }
+  </style>
+  <text x="8" y="46" font-family="monospace" font-size="40" font-weight="bold" class="text-color">jy</text>
+</svg>
