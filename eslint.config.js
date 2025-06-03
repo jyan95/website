@@ -19,6 +19,11 @@ export default [
     plugins: {
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
+      'eslint':recommended,
+      'plugin':React/recommended, // If using React
+      'plugin':React-hooks/recommended, // If using React
+      prettier, // Turns off ESLint rules that conflict with Prettier
+      'plugin':prettier/recommended, // Runs Prettier as an ESLint rule
     },
     rules: {
       ...js.configs.recommended.rules,
@@ -28,6 +33,14 @@ export default [
         'warn',
         { allowConstantExport: true },
       ],
+      'prettier/prettier':['error',{
+      "printWidth": 80,
+      "tabWidth": 2,
+      "useTabs": false,
+      "semi": true,
+      "singleQuote": true,
+      "trailingComma": "all"
+      }]
     },
   },
 ]

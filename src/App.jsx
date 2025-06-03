@@ -78,7 +78,7 @@ const LinkedinIcon = () => (
 
 const TerminalScreen = ({ children }) => (
   <div className="w-full max-w-full
-                  bg-gray-800 dark:bg-gray-950 rounded-lg shadow-lg p-6 sm:p-8 md:p-10
+                  bg-gray-800 dark:bg-gray-950 rounded-lg shadow-lg p-6 sm:p-8 md:p-10 {/* Reverted to uniform padding */}
                   ring-2 ring-green-500 dark:ring-cyan-500
                   transition-colors duration-300 ease-in-out
                   overflow-hidden">
@@ -171,41 +171,34 @@ const TerminalFooter = () => (
 
 // --- Main App Component ---
 function App() {
-  // State to manage dark mode. Reads from localStorage on initial load.
+  // State to manage dark mode. Reads from localStorage.
   const [isDarkMode, setIsDarkMode] = useState(() => {
+    console.log(localStorage)
     const savedMode = localStorage.getItem('theme');
-    if (savedMode) {
-      return savedMode === 'dark';
-    }
-    // Default to system preference if no preference is saved
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    // If a preference is saved, use it. Otherwise, default to system preference.
+    return savedMode && savedMode === 'dark' 
   });
-
-  // Effect to dynamically load Tailwind CSS CDN
-  useEffect(() => {
-    const tailwindScriptId = 'tailwind-cdn-script';
-    if (!document.getElementById(tailwindScriptId)) {
-      const script = document.createElement('script');
-      script.src = 'https://cdn.tailwindcss.com';
-      script.id = tailwindScriptId;
-      document.head.appendChild(script);
-    }
-  }, []); // Empty dependency array means this runs once on mount
 
   // Effect to apply/remove 'dark' class to the document's html element
   useEffect(() => {
-    const html = document.documentElement;
+    const htmlElement = document.documentElement;
 
-    // Explicitly add or remove the 'dark' class
+    // Ensure htmlElement and classList are available before trying to modify
+    if (!htmlElement || !htmlElement.classList) {
+      console.error("Error: document.documentElement or its classList is not available.");
+      return;
+    }
+
+    // Apply or remove the 'dark' class
     if (isDarkMode) {
-      html.classList.add('dark');
+      htmlElement.classList.add('dark');
     } else {
-      html.classList.remove('dark');
+      htmlElement.classList.remove('dark');
     }
 
     localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
 
-  }, [isDarkMode]);
+  }, [isDarkMode]); // Runs when isDarkMode state changes
 
   // Function to toggle dark mode
   const toggleDarkMode = () => {
@@ -213,17 +206,18 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen w-screen flex items-center justify-center p-4 sm:p-8 md:p-12 font-mono
+    <div className="min-h-screen w-screen flex items-center justify-center font-mono
                     bg-gray-900 text-green-400
                     dark:bg-black dark:text-cyan-400
-                    transition-colors duration-300 ease-in-out">
-      <TerminalScreen >
+                    transition-colors duration-300 ease-in-out
+                    p-4 sm:p-8 md:p-12"> {/* Outer padding remains */}
+      <TerminalScreen>
         <TerminalHeader toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
 
         <PromptLine command="whoami" />
         <h1 className="text-3xl sm:text-4xl font-bold mb-2 text-green-300 dark:text-cyan-300">Joshua Yan</h1>
         <p className="text-lg sm:text-xl text-green-400 dark:text-cyan-400 mb-6">
-          builder, swimmer, climber, pianist
+          Builder, swimmer, pianist, climber.
         </p>
 
         <PromptLine command="cat current_role.txt" />
@@ -243,11 +237,11 @@ function App() {
         <div className="mb-6">
           <SectionTitle>Areas of Work:</SectionTitle>
           <ul className="list-none text-base sm:text-lg space-y-1">
-            <ListItem>People management</ListItem>
+            <ListItem>Team management</ListItem>
             <ListItem>Project management</ListItem>
             <ListItem>System Design</ListItem>
-            <ListItem>UI/UX</ListItem>
-            <ListItem>Code Review, QA</ListItem>
+            <ListItem>Code Review</ListItem>
+            <ListItem>UI/UX, QA</ListItem>
           </ul>
         </div>
 
@@ -256,22 +250,21 @@ function App() {
           <SectionTitle>Recent Projects:</SectionTitle>
           <ul className="list-none text-base sm:text-md space-y-1">
             <ListItem>
-              <a href="https://kinetik.care/product/trip-scheduler" className={terminalLinkClasses}>A trip scheduling platform for health systems</a>
+              <a href="https://kinetik.care/product/trip-scheduler"  target="_blank" className={terminalLinkClasses}>A trip scheduling platform for health systems</a>
             </ListItem>
             <ListItem>
-               <a href="https://kinetik.care/product/trip-assistant" className={terminalLinkClasses}>A trip dispatch platform for transportation networks</a>
+               <a href="https://kinetik.care/product/trip-assistant"  target="_blank" className={terminalLinkClasses}>A trip dispatch platform for transportation networks</a>
             </ListItem>
             <ListItem>
-              <a href="https://kinetik.care/product/revenue-cycle-management" className={terminalLinkClasses}>A claims management platform for transportation providers</a>
+              <a href="https://kinetik.care/product/revenue-cycle-management"  target="_blank" className={terminalLinkClasses}>A claims management platform for transportation providers</a>
             </ListItem>
           </ul>
         </div>
 
-        <PromptLine command="cat leadership_philosophy.md" />
+        <PromptLine command="cat management_philosophy.md" />
         <div>
-          {/* <SectionTitle>Leadership Philosophy:</SectionTitle> */}
           <p className="text-base sm:text-sm leading-relaxed">
-            "To command is to serve, nothing more and nothing less."
+             "To command is to serve, nothing more and nothing less."
           </p>
         </div>
         <p className="mt-6 text-green-500 dark:text-cyan-500 font-bold">joshua@terminal:~$ <span className="animate-ping">_</span></p>
