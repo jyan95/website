@@ -1,48 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-// --- SVG Icons ---
-const SunIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className="lucide lucide-sun"
-  >
-    <circle cx="12" cy="12" r="8" />
-    <line x1="12" x2="12" y1="2" y2="6" />
-    <line x1="12" x2="12" y1="18" y2="22" />
-    <line x1="4.93" x2="7.76" y1="4.93" y2="7.76" />
-    <line x1="16.24" x2="19.07" y1="16.24" y2="19.07" />
-    <line x1="2" x2="6" y1="12" y2="12" />
-    <line x1="18" x2="22" y1="12" y2="12" />
-    <line x1="4.93" x2="7.76" y1="19.07" y2="16.24" />
-    <line x1="16.24" x2="19.07" y1="7.76" y2="4.93" />
-  </svg>
-);
-
-const MoonIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className="lucide lucide-moon"
-  >
-    <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
-  </svg>
-);
-
 const TerminalIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -139,9 +96,9 @@ const TerminalHeader = ({ toggleDarkMode, isDarkMode }) => (
     <span className="text-gray-400">joshua@terminal:~$</span>
     <button
       onClick={toggleDarkMode}
-      className="p-2 rounded-full bg-gray-700 dark:bg-gray-800
+      className="p-2 rounded-full
+                 bg-gray-700 hover:bg-gray-600 dark:bg-gray-800 dark:hover:bg-gray-700
                  text-green-400 dark:text-cyan-400
-                 hover:bg-gray-600 dark:hover:bg-gray-700
                  focus:outline-none focus:ring-2 focus:ring-green-500 dark:focus:ring-cyan-500
                  transition-colors duration-300 ease-in-out"
       aria-label="Toggle dark mode"
@@ -236,11 +193,18 @@ function App() {
   }, []); // Empty dependency array means this runs once on mount
 
   // Effect to apply/remove 'dark' class to the document's html element
-  // and save preference to localStorage whenever isDarkMode changes.
   useEffect(() => {
     const html = document.documentElement;
-    html.classList.toggle('dark', isDarkMode);
+
+    // Explicitly add or remove the 'dark' class
+    if (isDarkMode) {
+      html.classList.add('dark');
+    } else {
+      html.classList.remove('dark');
+    }
+
     localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+
   }, [isDarkMode]);
 
   // Function to toggle dark mode
@@ -253,13 +217,13 @@ function App() {
                     bg-gray-900 text-green-400
                     dark:bg-black dark:text-cyan-400
                     transition-colors duration-300 ease-in-out">
-      <TerminalScreen>
+      <TerminalScreen >
         <TerminalHeader toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
 
         <PromptLine command="whoami" />
         <h1 className="text-3xl sm:text-4xl font-bold mb-2 text-green-300 dark:text-cyan-300">Joshua Yan</h1>
         <p className="text-lg sm:text-xl text-green-400 dark:text-cyan-400 mb-6">
-          Builder, swimmer, pianist, climber.
+          builder, swimmer, pianist, climber
         </p>
 
         <PromptLine command="cat current_role.txt" />
@@ -279,18 +243,18 @@ function App() {
         <div className="mb-6">
           <SectionTitle>Areas of Work:</SectionTitle>
           <ul className="list-none text-base sm:text-lg space-y-1">
-            <ListItem>Team management</ListItem>
+            <ListItem>People management</ListItem>
             <ListItem>Project management</ListItem>
             <ListItem>System Design</ListItem>
-            <ListItem>Code Review</ListItem>
-            <ListItem>UI/UX, QA</ListItem>
+            <ListItem>UI/UX</ListItem>
+            <ListItem>Code Review, QA</ListItem>
           </ul>
         </div>
 
         <PromptLine command="git log --recent-projects" />
         <div className="mb-6">
           <SectionTitle>Recent Projects:</SectionTitle>
-          <ul className="list-none text-base sm:text-lg space-y-1">
+          <ul className="list-none text-base sm:text-md space-y-1">
             <ListItem>
               <a href="https://kinetik.care/product/trip-scheduler" className={terminalLinkClasses}>A trip scheduling platform for health systems</a>
             </ListItem>
@@ -303,11 +267,11 @@ function App() {
           </ul>
         </div>
 
-        <PromptLine command="cat management_philosophy.md" />
+        <PromptLine command="cat leadership_philosophy.md" />
         <div>
-          {/* <SectionTitle>Management Philosophy:</SectionTitle> */}
-          <p className="text-base sm:text-lg leading-relaxed">
-            Embracing individuality and autonomy, personal growth lies at the forefront of my management philosophy. I empower team members to identify and leverage their unique strengths, cultivating ownership and initiative toward shared goals.
+          {/* <SectionTitle>Leadership Philosophy:</SectionTitle> */}
+          <p className="text-base sm:text-sm leading-relaxed">
+            "To command is to serve, nothing more and nothing less."
           </p>
         </div>
         <p className="mt-6 text-green-500 dark:text-cyan-500 font-bold">joshua@terminal:~$ <span className="animate-ping">_</span></p>
