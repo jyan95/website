@@ -165,6 +165,8 @@ const SectionTitle = ({ children }) => (
   </h2>
 );
 
+const terminalLinkClasses = "text-blue-400 hover:underline hover:text-white dark:text-blue-300 dark:hover:underline dark:hover:text-white transition-colors duration-200";
+
 const ListItem = ({ children }) => (
   <li>
     <span className="text-green-500 dark:text-cyan-500 font-bold">--</span> {children}
@@ -267,7 +269,7 @@ function App() {
             href="https://kinetik.care/"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-semibold text-blue-400 hover:underline hover:text-white dark:text-blue-300 dark:hover:underline dark:hover:text-white"
+            className={terminalLinkClasses}
           >
             Kinetik
           </a>, designing and delivering software solutions for managed care transportation.
@@ -277,6 +279,7 @@ function App() {
         <div className="mb-6">
           <SectionTitle>Areas of Work:</SectionTitle>
           <ul className="list-none text-base sm:text-lg space-y-1">
+            <ListItem>Team management</ListItem>
             <ListItem>Project management</ListItem>
             <ListItem>System Design</ListItem>
             <ListItem>Code Review</ListItem>
@@ -288,15 +291,21 @@ function App() {
         <div className="mb-6">
           <SectionTitle>Recent Projects:</SectionTitle>
           <ul className="list-none text-base sm:text-lg space-y-1">
-            <ListItem>A trip scheduling platform for health systems.</ListItem>
-            <ListItem>A trip dispatch platform for transportation networks.</ListItem>
-            <ListItem>A claims generation, attestation, and submission platform for transportation providers.</ListItem>
+            <ListItem>
+              <a href="https://kinetik.care/product/trip-scheduler" className={terminalLinkClasses}>A trip scheduling platform for health systems</a>
+            </ListItem>
+            <ListItem>
+               <a href="https://kinetik.care/product/trip-assistant" className={terminalLinkClasses}>A trip dispatch platform for transportation networks</a>
+            </ListItem>
+            <ListItem>
+              <a href="https://kinetik.care/product/revenue-cycle-management" className={terminalLinkClasses}>A claims management platform for transportation providers</a>
+            </ListItem>
           </ul>
         </div>
 
         <PromptLine command="cat management_philosophy.md" />
         <div>
-          <SectionTitle>Management Philosophy:</SectionTitle>
+          {/* <SectionTitle>Management Philosophy:</SectionTitle> */}
           <p className="text-base sm:text-lg leading-relaxed">
             Embracing individuality and autonomy, personal growth lies at the forefront of my management philosophy. I empower team members to identify and leverage their unique strengths, cultivating ownership and initiative toward shared goals.
           </p>
