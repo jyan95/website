@@ -213,7 +213,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 sm:p-8 md:p-12 font-mono
+    <div className="min-h-screen w-screen flex items-center justify-center p-4 sm:p-8 md:p-12 font-mono
                     bg-gray-900 text-green-400
                     dark:bg-black dark:text-cyan-400
                     transition-colors duration-300 ease-in-out">
@@ -223,7 +223,7 @@ function App() {
         <PromptLine command="whoami" />
         <h1 className="text-3xl sm:text-4xl font-bold mb-2 text-green-300 dark:text-cyan-300">Joshua Yan</h1>
         <p className="text-lg sm:text-xl text-green-400 dark:text-cyan-400 mb-6">
-          builder, swimmer, pianist, climber
+          builder, swimmer, climber, pianist
         </p>
 
         <PromptLine command="cat current_role.txt" />
