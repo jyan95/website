@@ -1,30 +1,32 @@
 /*
-  The photo is sized off viewport WIDTH (half the page) and simply covers the
-  full height, so it no longer shrinks on short viewports.
+  GEOMETRY
+  --------
+  The climbing wall's edge runs (1010,950) -> (560,1650) in the 1080x1920
+  source, i.e. dy/dx = -1.556. object-fit:cover scales uniformly, so that
+  slope survives into screen space unchanged at every viewport size. Two
+  consequences drive this file:
 
-  Two things shape it, and they deliberately overlap:
+  1. A linear-gradient at 122.7deg has iso-lines exactly parallel to that
+     edge -- at ANY container aspect. (An SVG polygon with
+     preserveAspectRatio='none' would instead stretch, so its diagonal would
+     only line up at the one aspect it was tuned for.)
 
-  1. A soft SVG polygon mask tracing the climbing wall's diagonal edge. The
-     polygon is deliberately extended past the viewBox on the top/left/bottom
-     so only the diagonal gets a visibly blurred edge -- the other sides are
-     viewport edges and must stay crisp.
-  2. A tint gradient running perpendicular to that diagonal, ramping to fully
-     opaque page background BEFORE the mask finishes cutting.
+  2. Height is capped at the image's own aspect (92.44vw for a 52vw-wide box).
+     That keeps `cover` permanently width-driven, so the image scale is always
+     0.52 * viewportWidth / 1080 -- it shrinks linearly as the viewport
+     narrows instead of blowing up once a tall viewport starts driving the
+     crop. On wide screens the box is taller than the viewport and is simply
+     clipped by .page's overflow, so it still reads as full-bleed height.
 
-  Because the tint reaches solid background color while the photo is still
-  masked in, the image dissolves into the page rather than ending at a seam.
-
-  The polygon coordinates come from the wall edge in the source image
-  (roughly (1010,950)->(560,1650) in the 1080x1920 original). Since the photo
-  is width-driven under object-fit:cover, those map to a near-constant
-  percentage of the container across viewport sizes.
+  The same 0.6429 px-left-per-px-down slope positions the links; see
+  link-list.css.
 */
 .climbing-photo {
   position: absolute;
   top: 0;
   left: 0;
   width: 52vw;
-  height: 100%;
+  height: min(100vh, 92.44vw);
   overflow: hidden;
 }
 
@@ -34,15 +36,21 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='-30,-30 130,-30 130,2 31,130 -30,130' fill='white' style='filter:blur(3px)'/%3E%3C/svg%3E"),
-    linear-gradient(to right, #fff 72%, transparent 99%);
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='-30,-30 130,-30 130,2 31,130 -30,130' fill='white' style='filter:blur(3px)'/%3E%3C/svg%3E"),
-    linear-gradient(to right, #fff 72%, transparent 99%);
+
   /*
-    Both layers must be satisfied: the polygon carves the wall's diagonal, the
-    horizontal ramp dissolves the photo's right edge so the ceiling area above
-    the diagonal never meets the container edge as a hard vertical line.
+    Three layers, all required (intersect):
+      - diagonal : dissolves along the wall's edge
+      - right    : stops the ceiling area above the diagonal from meeting the
+                   container's right edge as a hard vertical line
+      - bottom   : only visible on tall viewports where the capped height ends
+                   above the fold; below the fold on wide screens
   */
+  -webkit-mask-image: linear-gradient(122.7deg, #fff 60%, transparent 88%),
+    linear-gradient(to right, #fff 72%, transparent 99%),
+    linear-gradient(to bottom, #fff 82%, transparent 100%);
+  mask-image: linear-gradient(122.7deg, #fff 60%, transparent 88%),
+    linear-gradient(to right, #fff 72%, transparent 99%),
+    linear-gradient(to bottom, #fff 82%, transparent 100%);
   -webkit-mask-composite: source-in;
   mask-composite: intersect;
   -webkit-mask-size: 100% 100%;
@@ -60,7 +68,7 @@
 
 .climbing-photo__tint {
   background: linear-gradient(
-    128deg,
+    122.7deg,
     rgba(10, 15, 31, 0.4) 0%,
     rgba(10, 15, 31, 0.46) 42%,
     rgba(10, 15, 31, 0.72) 62%,
@@ -74,7 +82,7 @@
     position: fixed;
     inset: 0;
     width: 100vw;
-    height: 100dvh;
+    height: min(100dvh, 177.78vw);
     z-index: 0;
   }
 
@@ -82,20 +90,12 @@
     object-position: center top;
   }
 
-  /* Vertical fade on mobile: photo dissolves downward into the page. */
+  /* No right-edge ramp needed: that edge is the screen edge, not a seam. */
   .climbing-photo__img,
   .climbing-photo__tint {
-    -webkit-mask-image: linear-gradient(#fff 0%, #fff 46%, transparent 88%);
-    mask-image: linear-gradient(#fff 0%, #fff 46%, transparent 88%);
-  }
-
-  .climbing-photo__tint {
-    background: linear-gradient(
-      180deg,
-      rgba(10, 15, 31, 0.42) 0%,
-      rgba(10, 15, 31, 0.5) 45%,
-      rgba(10, 15, 31, 0.85) 72%,
-      rgba(10, 15, 31, 1) 88%
-    );
+    -webkit-mask-image: linear-gradient(122.7deg, #fff 60%, transparent 88%),
+      linear-gradient(to bottom, #fff 78%, transparent 100%);
+    mask-image: linear-gradient(122.7deg, #fff 60%, transparent 88%),
+      linear-gradient(to bottom, #fff 78%, transparent 100%);
   }
 }

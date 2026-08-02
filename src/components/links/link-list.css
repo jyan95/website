@@ -1,14 +1,38 @@
 /*
-  Links overlay the page and sit just past the wall's diagonal edge. Each row
-  starts a step further left than the one above it, so the block's left margin
-  runs parallel to that diagonal instead of forming a flat column.
+  The wall's edge descends at a constant 0.6429 px left per px down, at every
+  viewport size and crop mode (see climbing-photo.css). So each row must shift
+  horizontally by 0.6429 * rowPitch. Expressing the pitch in `em` makes that
+  shift a fixed em value too, which is what keeps the links locked to the
+  diagonal at every breakpoint instead of drifting off it.
+
+  font-size lives on .link-nav so `em` here resolves against the link text.
 */
 .link-nav {
+  --link-pitch: 2.8em; /* row height 2.3em (1.4 line + 2 x 0.45 padding) + 0.5em gap */
+  --link-step: calc(var(--link-pitch) * 0.6429);
+
+  font-size: clamp(1.2rem, 1.92vw, 1.65rem);
   position: absolute;
-  left: 46vw;
   top: 50%;
+  /*
+    0.9292 * photoWidth is where the wall edge crosses the vertical centre;
+    back off 1.5 steps to reach the bottom row, then add a 1em gap so the text
+    starts just clear of the edge.
+  */
+  left: calc(48.32vw - (var(--link-step) * 1.5) + 1em);
   transform: translateY(-50%);
   z-index: 5;
+}
+
+/*
+  Once the viewport is taller than 1:1.082 the photo's height is capped, so it
+  is no longer vertically cropped and the wall edge sits elsewhere. Both
+  expressions agree exactly at the 1.082 boundary, so there is no jump.
+*/
+@media (max-aspect-ratio: 1082/1000) and (min-width: 768px) {
+  .link-nav {
+    left: calc(78.03vw - 32.15vh - (var(--link-step) * 1.5) + 1em);
+  }
 }
 
 .link-list {
@@ -18,20 +42,20 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.5rem;
+  gap: 0.5em;
+  line-height: 1.4;
   font-family: var(--font-brand-serif);
-  font-size: clamp(1.2rem, 1.92vw, 1.65rem);
   text-align: left;
 }
 
 .link-list li:nth-child(1) {
-  margin-left: 8.1vw;
+  margin-left: calc(var(--link-step) * 3);
 }
 .link-list li:nth-child(2) {
-  margin-left: 5.4vw;
+  margin-left: calc(var(--link-step) * 2);
 }
 .link-list li:nth-child(3) {
-  margin-left: 2.7vw;
+  margin-left: var(--link-step);
 }
 .link-list li:nth-child(4) {
   margin-left: 0;
@@ -39,7 +63,7 @@
 
 .link-list a {
   display: inline-block;
-  padding: 0.4rem 0;
+  padding: 0.45em 0;
   transition: color var(--duration-fast) var(--ease-out-expo);
 }
 
@@ -62,12 +86,19 @@
   color: var(--color-link-hover);
 }
 
+/*
+  Mobile: the wall edge is off-screen at these sizes, so the block anchors to
+  the right edge instead -- but it keeps the same geometric step, mirrored, so
+  the rows stay parallel to the diagonal rather than stacking flush.
+*/
 @media (max-width: 767px) {
   .link-nav {
+    --link-pitch: 3.3em; /* taller rows so touch targets stay usable */
+    font-size: clamp(1rem, 4.6vw, 1.3rem);
     position: fixed;
     left: auto;
-    right: clamp(1.25rem, 5vw, 2rem);
     top: auto;
+    right: clamp(1.25rem, 5vw, 2rem);
     bottom: clamp(2rem, 8vh, 4rem);
     transform: none;
     z-index: 10;
@@ -76,17 +107,31 @@
   .link-list {
     align-items: flex-end;
     text-align: right;
-    gap: 0.25rem;
   }
 
   .link-list a {
-    padding: 0.65rem 0;
+    padding: 0.7em 0;
   }
 
-  .link-list li:nth-child(1),
-  .link-list li:nth-child(2),
-  .link-list li:nth-child(3),
+  /*
+    Reversed relative to the desktop margin-left ladder: margin-right pushes a
+    row's trailing edge LEFT, so the multiplier has to grow downward for the
+    rows to descend leftward like the wall does.
+  */
+  .link-list li:nth-child(1) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .link-list li:nth-child(2) {
+    margin-left: 0;
+    margin-right: var(--link-step);
+  }
+  .link-list li:nth-child(3) {
+    margin-left: 0;
+    margin-right: calc(var(--link-step) * 2);
+  }
   .link-list li:nth-child(4) {
     margin-left: 0;
+    margin-right: calc(var(--link-step) * 3);
   }
 }
