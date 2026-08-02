@@ -87,51 +87,26 @@
 }
 
 /*
-  Mobile: the wall edge is off-screen at these sizes, so the block anchors to
-  the right edge instead -- but it keeps the same geometric step, mirrored, so
-  the rows stay parallel to the diagonal rather than stacking flush.
+  Mobile keeps the desktop's left-aligned ladder so the leading edge reads the
+  same way at every size. It cannot sit clear of the wall edge here -- at these
+  widths the longest row would run ~50px off-screen -- so the block anchors to
+  the left margin instead. By this point in the frame the photo has already
+  faded out beneath it, so the rows still land on background.
 */
 @media (max-width: 767px) {
   .link-nav {
     --link-pitch: 3.3em; /* taller rows so touch targets stay usable */
     font-size: clamp(1rem, 4.6vw, 1.3rem);
     position: fixed;
-    left: auto;
+    left: clamp(1.25rem, 5vw, 2rem);
+    right: auto;
     top: auto;
-    right: clamp(1.25rem, 5vw, 2rem);
     bottom: clamp(2rem, 8vh, 4rem);
     transform: none;
     z-index: 10;
   }
 
-  .link-list {
-    align-items: flex-end;
-    text-align: right;
-  }
-
   .link-list a {
     padding: 0.7em 0;
-  }
-
-  /*
-    Reversed relative to the desktop margin-left ladder: margin-right pushes a
-    row's trailing edge LEFT, so the multiplier has to grow downward for the
-    rows to descend leftward like the wall does.
-  */
-  .link-list li:nth-child(1) {
-    margin-left: 0;
-    margin-right: 0;
-  }
-  .link-list li:nth-child(2) {
-    margin-left: 0;
-    margin-right: var(--link-step);
-  }
-  .link-list li:nth-child(3) {
-    margin-left: 0;
-    margin-right: calc(var(--link-step) * 2);
-  }
-  .link-list li:nth-child(4) {
-    margin-left: 0;
-    margin-right: calc(var(--link-step) * 3);
   }
 }
