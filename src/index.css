@@ -1,22 +1,31 @@
 @import "tailwindcss";
 
-/* Global CSS Reset for html and body
-   This ensures full viewport coverage and removes default browser margins/padding.
-   It's important to have this here, as it's processed by Tailwind. */
-html, body {
-  margin: 0 !important;
-  padding: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  overflow-x: hidden; /* Prevent horizontal scroll */
+:root {
+  --color-tint: #0a0f1f;
+  --color-link: #ffffff;
+  --color-link-hover: #4b8bff;
+  --color-link-visited: #a97dfc;
+
+  --photo-blur: 4px;
+
+  --font-brand-serif: "Times New Roman", Times, serif;
+  --font-brand-sans: Helvetica, Arial, sans-serif;
+
+  --duration-fast: 150ms;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Ensure the root div for your React app also takes full dimensions */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  background: var(--color-tint);
+}
+
 #root {
   width: 100%;
   height: 100%;
-}
-
-button {
-  cursor: pointer;
 }

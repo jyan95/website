@@ -1,0 +1,101 @@
+/*
+  The photo is sized off viewport WIDTH (half the page) and simply covers the
+  full height, so it no longer shrinks on short viewports.
+
+  Two things shape it, and they deliberately overlap:
+
+  1. A soft SVG polygon mask tracing the climbing wall's diagonal edge. The
+     polygon is deliberately extended past the viewBox on the top/left/bottom
+     so only the diagonal gets a visibly blurred edge -- the other sides are
+     viewport edges and must stay crisp.
+  2. A tint gradient running perpendicular to that diagonal, ramping to fully
+     opaque page background BEFORE the mask finishes cutting.
+
+  Because the tint reaches solid background color while the photo is still
+  masked in, the image dissolves into the page rather than ending at a seam.
+
+  The polygon coordinates come from the wall edge in the source image
+  (roughly (1010,950)->(560,1650) in the 1080x1920 original). Since the photo
+  is width-driven under object-fit:cover, those map to a near-constant
+  percentage of the container across viewport sizes.
+*/
+.climbing-photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 52vw;
+  height: 100%;
+  overflow: hidden;
+}
+
+.climbing-photo__img,
+.climbing-photo__tint {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='-30,-30 130,-30 130,2 31,130 -30,130' fill='white' style='filter:blur(3px)'/%3E%3C/svg%3E"),
+    linear-gradient(to right, #fff 72%, transparent 99%);
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='-30,-30 130,-30 130,2 31,130 -30,130' fill='white' style='filter:blur(3px)'/%3E%3C/svg%3E"),
+    linear-gradient(to right, #fff 72%, transparent 99%);
+  /*
+    Both layers must be satisfied: the polygon carves the wall's diagonal, the
+    horizontal ramp dissolves the photo's right edge so the ceiling area above
+    the diagonal never meets the container edge as a hard vertical line.
+  */
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+.climbing-photo__img {
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  filter: blur(var(--photo-blur));
+}
+
+.climbing-photo__tint {
+  background: linear-gradient(
+    128deg,
+    rgba(10, 15, 31, 0.4) 0%,
+    rgba(10, 15, 31, 0.46) 42%,
+    rgba(10, 15, 31, 0.72) 62%,
+    rgba(10, 15, 31, 0.93) 74%,
+    rgba(10, 15, 31, 1) 84%
+  );
+}
+
+@media (max-width: 767px) {
+  .climbing-photo {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100dvh;
+    z-index: 0;
+  }
+
+  .climbing-photo__img {
+    object-position: center top;
+  }
+
+  /* Vertical fade on mobile: photo dissolves downward into the page. */
+  .climbing-photo__img,
+  .climbing-photo__tint {
+    -webkit-mask-image: linear-gradient(#fff 0%, #fff 46%, transparent 88%);
+    mask-image: linear-gradient(#fff 0%, #fff 46%, transparent 88%);
+  }
+
+  .climbing-photo__tint {
+    background: linear-gradient(
+      180deg,
+      rgba(10, 15, 31, 0.42) 0%,
+      rgba(10, 15, 31, 0.5) 45%,
+      rgba(10, 15, 31, 0.85) 72%,
+      rgba(10, 15, 31, 1) 88%
+    );
+  }
+}

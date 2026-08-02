@@ -1,0 +1,92 @@
+/*
+  Links overlay the page and sit just past the wall's diagonal edge. Each row
+  starts a step further left than the one above it, so the block's left margin
+  runs parallel to that diagonal instead of forming a flat column.
+*/
+.link-nav {
+  position: absolute;
+  left: 46vw;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+}
+
+.link-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-family: var(--font-brand-serif);
+  font-size: clamp(1.2rem, 1.92vw, 1.65rem);
+  text-align: left;
+}
+
+.link-list li:nth-child(1) {
+  margin-left: 8.1vw;
+}
+.link-list li:nth-child(2) {
+  margin-left: 5.4vw;
+}
+.link-list li:nth-child(3) {
+  margin-left: 2.7vw;
+}
+.link-list li:nth-child(4) {
+  margin-left: 0;
+}
+
+.link-list a {
+  display: inline-block;
+  padding: 0.4rem 0;
+  transition: color var(--duration-fast) var(--ease-out-expo);
+}
+
+.link-list a:link {
+  color: var(--color-link);
+  text-decoration: none;
+}
+
+.link-list a:visited {
+  color: var(--color-link-visited);
+}
+
+.link-list a:hover,
+.link-list a:focus-visible {
+  color: var(--color-link-hover);
+  text-decoration: underline;
+}
+
+.link-list a:active {
+  color: var(--color-link-hover);
+}
+
+@media (max-width: 767px) {
+  .link-nav {
+    position: fixed;
+    left: auto;
+    right: clamp(1.25rem, 5vw, 2rem);
+    top: auto;
+    bottom: clamp(2rem, 8vh, 4rem);
+    transform: none;
+    z-index: 10;
+  }
+
+  .link-list {
+    align-items: flex-end;
+    text-align: right;
+    gap: 0.25rem;
+  }
+
+  .link-list a {
+    padding: 0.65rem 0;
+  }
+
+  .link-list li:nth-child(1),
+  .link-list li:nth-child(2),
+  .link-list li:nth-child(3),
+  .link-list li:nth-child(4) {
+    margin-left: 0;
+  }
+}
