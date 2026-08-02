@@ -1,5 +1,6 @@
 import './link-list.css';
 
+// Ordered longest label to shortest, top to bottom.
 const LINKS = [
   {
     label: 'linkedin.com/in/joshua-yan',
@@ -7,14 +8,14 @@ const LINKS = [
     external: true,
   },
   {
-    label: 'jyan0602@gmail.com',
-    href: 'mailto:jyan0602@gmail.com',
-    external: false,
-  },
-  {
     label: 'joshuayan.com/resume.pdf',
     href: '/resume.pdf',
     external: true,
+  },
+  {
+    label: 'jyan0602@gmail.com',
+    href: 'mailto:jyan0602@gmail.com',
+    external: false,
   },
   {
     label: 'hyperbolic.nyc',
