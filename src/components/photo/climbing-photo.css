@@ -69,11 +69,11 @@
 .climbing-photo__tint {
   background: linear-gradient(
     122.7deg,
-    rgba(10, 15, 31, 0.4) 0%,
-    rgba(10, 15, 31, 0.46) 42%,
-    rgba(10, 15, 31, 0.72) 62%,
-    rgba(10, 15, 31, 0.93) 74%,
-    rgba(10, 15, 31, 1) 84%
+    rgb(var(--tint-rgb) / 0.4) 0%,
+    rgb(var(--tint-rgb) / 0.46) 42%,
+    rgb(var(--tint-rgb) / 0.72) 62%,
+    rgb(var(--tint-rgb) / 0.93) 74%,
+    rgb(var(--tint-rgb) / 1) 84%
   );
 }
 

@@ -1,12 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --color-tint: #0a0f1f;
+  /* Off-black with a whisper of blue so the photo's cool cast still belongs.
+     --tint-rgb must stay in sync: it feeds the photo's fade gradient. */
+  --color-tint: #101014;
+  --tint-rgb: 16 16 20;
   --color-link: #ffffff;
   --color-link-hover: #4b8bff;
   --color-link-visited: #a97dfc;
 
   --photo-blur: 4px;
+  --static-opacity: 0.05;
 
   --font-brand-serif: "Times New Roman", Times, serif;
   --font-brand-sans: Helvetica, Arial, sans-serif;

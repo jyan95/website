@@ -9,6 +9,7 @@ function App() {
       <NameOverlay />
       <ClimbingPhoto />
       <LinkList />
+      <div className="tv-static" aria-hidden="true" />
     </main>
   );
 }

@@ -5,10 +5,10 @@
   shift a fixed em value too, which is what keeps the links locked to the
   diagonal at every breakpoint instead of drifting off it.
 
-  font-size lives on .link-nav so `em` here resolves against the link text.
+  font-size lives on .link-nav so `em` here resolves against the glyph size.
 */
 .link-nav {
-  --link-pitch: 2.8em; /* row height 2.3em (1.4 line + 2 x 0.45 padding) + 0.5em gap */
+  --link-pitch: 2.8em; /* row height 2.3em (1.4em glyph + 2 x 0.45em padding) + 0.5em gap */
   --link-step: calc(var(--link-pitch) * 0.6429);
 
   font-size: clamp(1.2rem, 1.92vw, 1.65rem);
@@ -43,9 +43,6 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 0.5em;
-  line-height: 1.4;
-  font-family: var(--font-brand-serif);
-  text-align: left;
 }
 
 .link-list li:nth-child(1) {
@@ -61,29 +58,50 @@
   margin-left: 0;
 }
 
+/*
+  block (not inline-block) so no text line box pads the row: row height is
+  exactly glyph + padding, which the pitch math above depends on.
+
+  Glyph color rides the `fill` property, not `color` — fill inherits into the
+  inline SVGs and is one of the few properties :visited is allowed to style.
+*/
 .link-list a {
-  display: inline-block;
+  display: block;
   padding: 0.45em 0;
-  transition: color var(--duration-fast) var(--ease-out-expo);
+  transition: fill var(--duration-fast) var(--ease-out-expo);
 }
 
 .link-list a:link {
-  color: var(--color-link);
-  text-decoration: none;
+  fill: var(--color-link);
 }
 
 .link-list a:visited {
-  color: var(--color-link-visited);
+  fill: var(--color-link-visited);
 }
 
 .link-list a:hover,
 .link-list a:focus-visible {
-  color: var(--color-link-hover);
-  text-decoration: underline;
+  fill: var(--color-link-hover);
 }
 
 .link-list a:active {
-  color: var(--color-link-hover);
+  fill: var(--color-link-hover);
+}
+
+.link-list a:focus-visible {
+  outline: 2px solid var(--color-link-hover);
+  outline-offset: 4px;
+}
+
+.glyph {
+  display: block;
+  width: 1.4em;
+  height: 1.4em;
+}
+
+/* The H mark's 904x353 box at the same 1.4em height. */
+.glyph--wide {
+  width: calc(1.4em * 904 / 353);
 }
 
 /*
