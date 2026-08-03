@@ -146,15 +146,16 @@
   stroke-linejoin: round;
 
   /*
-    Hover spins the mark continuously on its vertical axis. Leaving drops
-    animation-name, which reverts the transform to this base value -- and the
-    transition below interpolates from whatever angle the animation had
-    reached, so it spins back to face-on in a flat 2s however far round it
-    got -- linear, matching the spin's own speed feel. Nothing to read, no
-    turns to count, no proportional unwind.
+    Hover turns the mark once on its vertical axis, capped at 360deg; leaving
+    rewinds it. Transitions only -- no keyframes -- because that is what makes
+    the rewind work: a transition interpolates from the current mid-flight
+    angle, whereas dropping a CSS animation reverts the transform instantly
+    and flashed the mark back to face-on.
 
-    Each iteration ends at 360deg == 0deg, so the angle in flight is never
-    more than one turn from base and the fixed duration always reads right.
+    Asymmetric durations do the rest: the one declared HERE applies heading
+    back to base (2s), the one in the :hover rule heading out (4s). Capping at
+    a single turn means the rewind is never more than 360deg, so a fixed
+    duration always reads right -- no angle to track, no turns to count.
   */
   transform: perspective(600px) rotateY(0deg);
   transition: transform 2s linear;
@@ -162,26 +163,16 @@
 
 .link-list a:hover .glyph,
 .link-list a:focus-visible .glyph {
-  animation: glyph-spin 4s linear infinite;
-}
-
-@keyframes glyph-spin {
-  from {
-    transform: perspective(600px) rotateY(0deg);
-  }
-  to {
-    transform: perspective(600px) rotateY(360deg);
-  }
+  transform: perspective(600px) rotateY(360deg);
+  transition: transform 4s linear;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .glyph {
-    transition: none;
-  }
-
+  .glyph,
   .link-list a:hover .glyph,
   .link-list a:focus-visible .glyph {
-    animation: none;
+    transform: none;
+    transition: none;
   }
 }
 
