@@ -149,14 +149,15 @@
     Hover spins the mark continuously on its vertical axis. Leaving drops
     animation-name, which reverts the transform to this base value -- and the
     transition below interpolates from whatever angle the animation had
-    reached, so it spins back to face-on in a flat 1s however far round it
-    got. Nothing to read, no turns to count, no proportional unwind.
+    reached, so it spins back to face-on in a flat 2s however far round it
+    got -- linear, matching the spin's own speed feel. Nothing to read, no
+    turns to count, no proportional unwind.
 
     Each iteration ends at 360deg == 0deg, so the angle in flight is never
     more than one turn from base and the fixed duration always reads right.
   */
   transform: perspective(600px) rotateY(0deg);
-  transition: transform 1s var(--ease-out-expo);
+  transition: transform 2s linear;
 }
 
 .link-list a:hover .glyph,
