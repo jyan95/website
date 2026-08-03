@@ -6,12 +6,19 @@
 }
 
 /*
-  Old-TV static: one monochrome feTurbulence tile over the whole scene.
-  The layer is oversized (inset: -75%) so the jitter jumps in `translate`
-  never expose an edge; steps(1) holds each frame then snaps, which is what
-  reads as broadcast noise rather than a smooth drift. Sits above everything
-  (links are z<=10) like glass on a CRT; pointer-events off keeps them
-  clickable through it.
+  Old-TV static, two feTurbulence tiles in one element (calibrated against
+  undefined-shin.com's grain):
+    - speck layer: a hard table threshold keeps only the top ~2% of
+      noise, at full white -- sparse near-white pops, the actual
+      "broadcast static" read.
+    - haze layer: the same noise compressed to 3% amplitude -- the soft
+      film-grain bed underneath.
+  --static-opacity is the master gain over both; the layers' relative
+  strengths are baked into the SVGs. The element is oversized (inset: -75%)
+  so the jitter jumps in `translate` never expose an edge; steps(1) holds
+  each frame then snaps, which is what reads as static rather than drift.
+  Sits above everything (links are z<=10) like glass on a CRT;
+  pointer-events off keeps them clickable through it.
 */
 .tv-static {
   position: fixed;
@@ -19,7 +26,10 @@
   z-index: 30;
   pointer-events: none;
   opacity: var(--static-opacity);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch' seed='7'/%3E%3CfeColorMatrix type='matrix' values='0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 1'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='table' tableValues='0 0 0 0 0 1 1'/%3E%3CfeFuncG type='table' tableValues='0 0 0 0 0 1 1'/%3E%3CfeFuncB type='table' tableValues='0 0 0 0 0 1 1'/%3E%3CfeFuncA type='linear' slope='0' intercept='1'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='0.03'/%3E%3CfeFuncG type='linear' slope='0.03'/%3E%3CfeFuncB type='linear' slope='0.03'/%3E%3CfeFuncA type='linear' slope='0' intercept='1'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-blend-mode: screen;
   animation: tv-static-jitter 0.7s steps(1) infinite;
 }
 

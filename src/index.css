@@ -3,14 +3,14 @@
 :root {
   /* Off-black with a whisper of blue so the photo's cool cast still belongs.
      --tint-rgb must stay in sync: it feeds the photo's fade gradient. */
-  --color-tint: #101014;
-  --tint-rgb: 16 16 20;
+  --color-tint: #131318;
+  --tint-rgb: 19 19 24;
   --color-link: #ffffff;
   --color-link-hover: #4b8bff;
   --color-link-visited: #a97dfc;
 
   --photo-blur: 4px;
-  --static-opacity: 0.05;
+  --static-opacity: 0.65; /* master gain; layer strengths baked into the SVGs */
 
   --font-brand-serif: "Times New Roman", Times, serif;
   --font-brand-sans: Helvetica, Arial, sans-serif;
