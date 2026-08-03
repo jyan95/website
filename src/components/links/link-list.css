@@ -146,17 +146,22 @@
   stroke-linejoin: round;
 
   /*
-    Hover spins the mark on its vertical axis. The animation is always
-    attached but paused, so leaving mid-turn freezes the mark where it is
-    instead of snapping back to face-on.
+    Hover spins the mark continuously on its vertical axis. Leaving drops
+    animation-name, which reverts the transform to this base value -- and the
+    transition below interpolates from whatever angle the animation had
+    reached, so it spins back to face-on in a flat 0.4s however far round it
+    got. Nothing to read, no turns to count, no proportional unwind.
+
+    Each iteration ends at 360deg == 0deg, so the angle in flight is never
+    more than one turn from base and the fixed duration always reads right.
   */
-  animation: glyph-spin 4s linear infinite;
-  animation-play-state: paused;
+  transform: perspective(600px) rotateY(0deg);
+  transition: transform 0.4s var(--ease-out-expo);
 }
 
 .link-list a:hover .glyph,
 .link-list a:focus-visible .glyph {
-  animation-play-state: running;
+  animation: glyph-spin 4s linear infinite;
 }
 
 @keyframes glyph-spin {
@@ -170,6 +175,11 @@
 
 @media (prefers-reduced-motion: reduce) {
   .glyph {
+    transition: none;
+  }
+
+  .link-list a:hover .glyph,
+  .link-list a:focus-visible .glyph {
     animation: none;
   }
 }
