@@ -1,25 +1,27 @@
 /*
-  The wall's edge descends at a constant 0.6429 px left per px down, at every
-  viewport size and crop mode (see climbing-photo.css). So each row must shift
-  horizontally by 0.6429 * rowPitch. Expressing the pitch in `em` makes that
-  shift a fixed em value too, which is what keeps the links locked to the
+  The wall's edge descends at a constant 0.6429 px left per px down (57.26deg
+  from horizontal), at every viewport size and crop mode (see
+  climbing-photo.css). The ladder is deliberately pitched 3deg steeper toward
+  vertical (60.26deg -> 0.5714 px left per px down), so each row shifts
+  horizontally by 0.5714 * rowPitch. Expressing the pitch in `em` makes that
+  shift a fixed em value too, which is what keeps the links locked to their
   diagonal at every breakpoint instead of drifting off it.
 
   font-size lives on .link-nav so `em` here resolves against the glyph size.
 */
 .link-nav {
   --link-pitch: 2.8em; /* row height 2.3em (1.4em glyph + 2 x 0.45em padding) + 0.5em gap */
-  --link-step: calc(var(--link-pitch) * 0.6429);
+  --link-step: calc(var(--link-pitch) * 0.5714);
 
   font-size: clamp(1.2rem, 1.92vw, 1.65rem);
   position: absolute;
   top: 50%;
   /*
     0.9292 * photoWidth is where the wall edge crosses the vertical centre;
-    back off 1.5 steps to reach the bottom row, then add a 1em gap so the text
-    starts just clear of the edge.
+    back off 2 steps to reach the bottom row of the 5-row stack, then add a
+    1em gap so the glyphs start just clear of the edge.
   */
-  left: calc(48.32vw - (var(--link-step) * 1.5) + 1em);
+  left: calc(48.32vw - (var(--link-step) * 2) + 1em);
   transform: translateY(-50%);
   z-index: 5;
 }
@@ -31,7 +33,7 @@
 */
 @media (max-aspect-ratio: 1082/1000) and (min-width: 768px) {
   .link-nav {
-    left: calc(78.03vw - 32.15vh - (var(--link-step) * 1.5) + 1em);
+    left: calc(78.03vw - 32.15vh - (var(--link-step) * 2) + 1em);
   }
 }
 
@@ -46,15 +48,18 @@
 }
 
 .link-list li:nth-child(1) {
-  margin-left: calc(var(--link-step) * 3);
+  margin-left: calc(var(--link-step) * 4);
 }
 .link-list li:nth-child(2) {
-  margin-left: calc(var(--link-step) * 2);
+  margin-left: calc(var(--link-step) * 3);
 }
 .link-list li:nth-child(3) {
-  margin-left: var(--link-step);
+  margin-left: calc(var(--link-step) * 2);
 }
 .link-list li:nth-child(4) {
+  margin-left: var(--link-step);
+}
+.link-list li:nth-child(5) {
   margin-left: 0;
 }
 

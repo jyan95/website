@@ -9,6 +9,28 @@ import './link-list.css';
   the H mark's 904-unit-wide box would render its stroke invisibly thin.
 */
 
+/* The Kinetik K mark, paths from the 2026 rebrand logo icon (20x21.163). */
+function KinetikGlyph() {
+  return (
+    <svg
+      className="glyph"
+      viewBox="0 0 20 21.163"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path
+        d="M5.82473 6.05383V0H0V11.8475C1.29503 9.86515 3.16477 7.8828 5.82473 6.05189V6.05383Z"
+        vectorEffect="non-scaling-stroke"
+      />
+      <path
+        d="M5.82473 20.969H0C0 15.7947 2.59395 11.4514 7.71 8.05754C12.3096 5.00733 12.8125 3.17642 12.8125 0H18.6372C18.6372 5.75677 16.6199 9.13512 10.9311 12.9115C7.44789 15.222 5.82667 17.7829 5.82667 20.969H5.82473Z"
+        vectorEffect="non-scaling-stroke"
+      />
+      <circle cx="15.5328" cy="17.6682" r="3.4948" vectorEffect="non-scaling-stroke" />
+    </svg>
+  );
+}
+
 function LinkedInGlyph() {
   return (
     <svg
@@ -21,7 +43,13 @@ function LinkedInGlyph() {
         d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V8h4z"
         vectorEffect="non-scaling-stroke"
       />
-      <rect x="2" y="9" width="4" height="12" vectorEffect="non-scaling-stroke" />
+      <rect
+        x="2"
+        y="9"
+        width="4"
+        height="12"
+        vectorEffect="non-scaling-stroke"
+      />
       <circle cx="4" cy="4" r="2" vectorEffect="non-scaling-stroke" />
     </svg>
   );
@@ -37,13 +65,13 @@ function ResumeGlyph() {
       focusable="false"
     >
       <path
-        d="M15 2.75H7A1.75 1.75 0 0 0 5.25 4.5v15A1.75 1.75 0 0 0 7 21.25h10a1.75 1.75 0 0 0 1.75-1.75V6.5L15 2.75Z"
+        d="M15.5 2H4.5v20h15V6L15.5 2Z"
         vectorEffect="non-scaling-stroke"
       />
-      <path d="M15 2.75V6.5h3.75" vectorEffect="non-scaling-stroke" />
-      <circle cx="11" cy="8.1" r="1.7" vectorEffect="non-scaling-stroke" />
-      <path d="M8 13.5a3 3 0 0 1 6 0" vectorEffect="non-scaling-stroke" />
-      <path d="M8.25 16.4h7.5M8.25 18.9h7.5" vectorEffect="non-scaling-stroke" />
+      <path d="M15.5 2v4h4" vectorEffect="non-scaling-stroke" />
+      <circle cx="12" cy="9" r="2" vectorEffect="non-scaling-stroke" />
+      <path d="M8.5 15a3.5 3.5 0 0 1 7 0" vectorEffect="non-scaling-stroke" />
+      <path d="M8 17.75h8M8 19.9h8" vectorEffect="non-scaling-stroke" />
     </svg>
   );
 }
@@ -61,6 +89,9 @@ function GmailGlyph() {
         d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"
         vectorEffect="non-scaling-stroke"
       />
+      {/* seams where the flap overlaps the columns */}
+      <path d="M5.455 4.64V11.73" vectorEffect="non-scaling-stroke" />
+      <path d="M18.545 4.64V11.73" vectorEffect="non-scaling-stroke" />
     </svg>
   );
 }
@@ -83,6 +114,12 @@ function HyperbolicGlyph() {
 }
 
 const LINKS = [
+  {
+    href: 'https://kinetik.care/',
+    ariaLabel: 'Kinetik (opens in new tab)',
+    external: true,
+    Glyph: KinetikGlyph,
+  },
   {
     href: 'https://www.linkedin.com/in/joshua-yan/',
     ariaLabel: 'LinkedIn profile (opens in new tab)',
