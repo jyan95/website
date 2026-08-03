@@ -11,7 +11,7 @@ import './corner-notes.css';
 */
 const NOTES = [
   { text: 'New York', corner: 'tr' },
-  { text: 'Healthcare infrastructure', corner: 'bl' },
+  { text: 'Software', corner: 'bl' },
   { text: '2026', corner: 'br' },
 ];
 
