@@ -26,7 +26,12 @@ function KinetikGlyph() {
         d="M5.82473 20.969H0C0 15.7947 2.59395 11.4514 7.71 8.05754C12.3096 5.00733 12.8125 3.17642 12.8125 0H18.6372C18.6372 5.75677 16.6199 9.13512 10.9311 12.9115C7.44789 15.222 5.82667 17.7829 5.82667 20.969H5.82473Z"
         vectorEffect="non-scaling-stroke"
       />
-      <circle cx="15.5328" cy="17.6682" r="3.4948" vectorEffect="non-scaling-stroke" />
+      <circle
+        cx="15.5328"
+        cy="17.6682"
+        r="3.4948"
+        vectorEffect="non-scaling-stroke"
+      />
     </svg>
   );
 }
@@ -64,10 +69,7 @@ function ResumeGlyph() {
       aria-hidden="true"
       focusable="false"
     >
-      <path
-        d="M15.5 2H4.5v20h15V6L15.5 2Z"
-        vectorEffect="non-scaling-stroke"
-      />
+      <path d="M15.5 2H4.5v20h15V6L15.5 2Z" vectorEffect="non-scaling-stroke" />
       <path d="M15.5 2v4h4" vectorEffect="non-scaling-stroke" />
       <circle cx="12" cy="9" r="2" vectorEffect="non-scaling-stroke" />
       <path d="M8.5 15a3.5 3.5 0 0 1 7 0" vectorEffect="non-scaling-stroke" />
@@ -100,7 +102,7 @@ function GmailGlyph() {
 function HyperbolicGlyph() {
   return (
     <svg
-      className="glyph"
+      className="glyph glyph--h"
       viewBox="0 0 904 353"
       aria-hidden="true"
       focusable="false"

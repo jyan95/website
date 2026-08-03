@@ -99,8 +99,8 @@
 }
 
 /*
-  One box for every glyph; non-square marks (the H) letterbox inside it.
-  stroke-width is in screen px thanks to each shape's non-scaling-stroke.
+  One box for every glyph. stroke-width is in screen px thanks to each
+  shape's non-scaling-stroke.
 */
 .glyph {
   display: block;
@@ -110,6 +110,17 @@
   stroke-width: 1.5;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+/*
+  The wide H mark is matched to the set by drawn HEIGHT (1.2em, what the
+  square glyphs actually draw inside their boxes), not by box width. The
+  0.1em margins keep the row's total 1.4em so the ladder pitch holds.
+*/
+.glyph--h {
+  height: 1.2em;
+  width: calc(1.2em * 904 / 353);
+  margin: 0.1em 0;
 }
 
 /*
