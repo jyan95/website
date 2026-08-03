@@ -4,6 +4,12 @@ import climbingWebp from '../../assets/climbing.webp';
 import './climbing-photo.css';
 
 const MAX_SHIFT = 8; // px of photo drift, either axis
+/*
+  Must satisfy: containerWidth * (SCALE - 1) / 2 >= MAX_SHIFT at the
+  narrowest layout (a 360px phone gives 10.8px), or the drift exposes the
+  photo's edge. Keep in sync with .climbing-photo__parallax in the CSS.
+*/
+const SCALE = 1.06;
 
 function ClimbingPhoto() {
   const parallaxRef = useRef(null);
@@ -23,7 +29,7 @@ function ClimbingPhoto() {
       raf = 0;
       pos.x += (target.x - pos.x) * 0.08;
       pos.y += (target.y - pos.y) * 0.08;
-      el.style.transform = `scale(1.04) translate3d(${pos.x.toFixed(2)}px, ${pos.y.toFixed(2)}px, 0)`;
+      el.style.transform = `scale(${SCALE}) translate3d(${pos.x.toFixed(2)}px, ${pos.y.toFixed(2)}px, 0)`;
       if (
         Math.abs(target.x - pos.x) > 0.05 ||
         Math.abs(target.y - pos.y) > 0.05

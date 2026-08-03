@@ -57,12 +57,14 @@
 
 /*
   Parallax layer: baseline scale hides the edges the cursor/gyro drift would
-  otherwise expose (transform is overwritten inline from ClimbingPhoto.jsx).
+  otherwise expose (transform is overwritten inline from ClimbingPhoto.jsx --
+  keep this scale in sync with SCALE there). 1.06 leaves >=10px of margin
+  even on a 360px phone, comfortably over the 8px max drift.
 */
 .climbing-photo__parallax {
   position: absolute;
   inset: 0;
-  transform: scale(1.04);
+  transform: scale(1.06);
   will-change: transform;
 }
 
