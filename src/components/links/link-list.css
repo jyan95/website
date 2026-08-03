@@ -153,12 +153,12 @@
     and flashed the mark back to face-on.
 
     Asymmetric durations do the rest: the one declared HERE applies heading
-    back to base (2s), the one in the :hover rule heading out (4s). Capping at
+    back to base (1s), the one in the :hover rule heading out (4s). Capping at
     a single turn means the rewind is never more than 360deg, so a fixed
     duration always reads right -- no angle to track, no turns to count.
   */
   transform: perspective(600px) rotateY(0deg);
-  transition: transform 2s linear;
+  transition: transform 1s linear;
 }
 
 .link-list a:hover .glyph,
