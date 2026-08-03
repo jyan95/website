@@ -1,9 +1,9 @@
 /*
   The wall's edge descends at a constant 0.6429 px left per px down (57.26deg
   from horizontal), at every viewport size and crop mode (see
-  climbing-photo.css). The ladder is deliberately pitched 3deg steeper toward
-  vertical (60.26deg -> 0.5714 px left per px down), so each row shifts
-  horizontally by 0.5714 * rowPitch. Expressing the pitch in `em` makes that
+  climbing-photo.css). The ladder is deliberately pitched 4deg steeper toward
+  vertical (61.26deg -> 0.5485 px left per px down), so each row shifts
+  horizontally by 0.5485 * rowPitch. Expressing the pitch in `em` makes that
   shift a fixed em value too, which is what keeps the links locked to their
   diagonal at every breakpoint instead of drifting off it.
 
@@ -11,7 +11,9 @@
 */
 .link-nav {
   --link-pitch: 2.8em; /* row height 2.3em (1.4em glyph + 2 x 0.45em padding) + 0.5em gap */
-  --link-step: calc(var(--link-pitch) * 0.5714);
+  --link-step: calc(var(--link-pitch) * 0.5485);
+  /* how far the wide H box (0.85em * 904/353) overhangs a 1.4em box, per side */
+  --h-overhang: calc((0.85em * 904 / 353 - 1.4em) / 2);
 
   font-size: clamp(1.2rem, 1.92vw, 1.65rem);
   position: absolute;
@@ -47,17 +49,23 @@
   gap: 0.5em;
 }
 
+/*
+  The diagonal runs through each glyph's CENTER, not its left edge. All
+  boxes are 1.4em wide except the H (last row), which overhangs each side by
+  --h-overhang; giving every standard row that extra constant keeps all five
+  centers collinear.
+*/
 .link-list li:nth-child(1) {
-  margin-left: calc(var(--link-step) * 4);
+  margin-left: calc(var(--link-step) * 4 + var(--h-overhang));
 }
 .link-list li:nth-child(2) {
-  margin-left: calc(var(--link-step) * 3);
+  margin-left: calc(var(--link-step) * 3 + var(--h-overhang));
 }
 .link-list li:nth-child(3) {
-  margin-left: calc(var(--link-step) * 2);
+  margin-left: calc(var(--link-step) * 2 + var(--h-overhang));
 }
 .link-list li:nth-child(4) {
-  margin-left: var(--link-step);
+  margin-left: calc(var(--link-step) + var(--h-overhang));
 }
 .link-list li:nth-child(5) {
   margin-left: 0;
@@ -113,30 +121,30 @@
 }
 
 /*
-  The wide H mark is matched to the set by drawn HEIGHT (1.2em, what the
-  square glyphs actually draw inside their boxes), not by box width. The
-  0.1em margins keep the row's total 1.4em so the ladder pitch holds.
+  The wide H mark is sized by drawn height, tuned by eye against the set
+  (a hair under the square glyphs' drawn height reads as equal mass for a
+  wide low mark). The margins keep the row's total 1.4em so the ladder
+  pitch holds.
 */
 .glyph--h {
-  height: 1.2em;
-  width: calc(1.2em * 904 / 353);
-  margin: 0.1em 0;
+  height: 0.85em;
+  width: calc(0.85em * 904 / 353);
+  margin: 0.275em 0;
 }
 
 /*
-  Mobile keeps the desktop's left-aligned ladder so the leading edge reads the
-  same way at every size. It cannot sit clear of the wall edge here -- at these
-  widths the longest row would run ~50px off-screen -- so the block anchors to
-  the left margin instead. By this point in the frame the photo has already
-  faded out beneath it, so the rows still land on background.
+  Mobile keeps the desktop's ladder shape but anchors the block to the RIGHT
+  edge with a fixed 48px margin. The rows still stagger leftward inside the
+  block, and by this point in the frame the photo has already faded out
+  beneath them, so they land on background.
 */
 @media (max-width: 767px) {
   .link-nav {
     --link-pitch: 3.3em; /* taller rows so touch targets stay usable */
     font-size: clamp(1rem, 4.6vw, 1.3rem);
     position: fixed;
-    left: clamp(1.25rem, 5vw, 2rem);
-    right: auto;
+    left: auto;
+    right: 48px;
     top: auto;
     bottom: clamp(2rem, 8vh, 4rem);
     transform: none;
