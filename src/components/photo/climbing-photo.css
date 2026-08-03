@@ -18,8 +18,12 @@
      crop. On wide screens the box is taller than the viewport and is simply
      clipped by .page's overflow, so it still reads as full-bleed height.
 
-  The same 0.6429 px-left-per-px-down slope positions the links; see
-  link-list.css.
+  The wall edge's 0.6429 px-left-per-px-down slope also anchors the links
+  (rotated a few degrees steeper); see link-list.css.
+
+  The masks live on the CONTAINER, not the image: the parallax wrapper
+  drifts the photo a few px under a stationary fade line, instead of
+  dragging the fade with it.
 */
 .climbing-photo {
   position: absolute;
@@ -28,14 +32,6 @@
   width: 52vw;
   height: min(100vh, 92.44vw);
   overflow: hidden;
-}
-
-.climbing-photo__img,
-.climbing-photo__tint {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
 
   /*
     Three layers, all required (intersect):
@@ -57,6 +53,25 @@
   mask-size: 100% 100%;
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
+}
+
+/*
+  Parallax layer: baseline scale hides the edges the cursor/gyro drift would
+  otherwise expose (transform is overwritten inline from ClimbingPhoto.jsx).
+*/
+.climbing-photo__parallax {
+  position: absolute;
+  inset: 0;
+  transform: scale(1.04);
+  will-change: transform;
+}
+
+.climbing-photo__img,
+.climbing-photo__tint {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .climbing-photo__img {
@@ -84,18 +99,15 @@
     width: 100vw;
     height: min(100dvh, 177.78vw);
     z-index: 0;
-  }
 
-  .climbing-photo__img {
-    object-position: center top;
-  }
-
-  /* No right-edge ramp needed: that edge is the screen edge, not a seam. */
-  .climbing-photo__img,
-  .climbing-photo__tint {
+    /* No right-edge ramp needed: that edge is the screen edge, not a seam. */
     -webkit-mask-image: linear-gradient(122.7deg, #fff 60%, transparent 88%),
       linear-gradient(to bottom, #fff 78%, transparent 100%);
     mask-image: linear-gradient(122.7deg, #fff 60%, transparent 88%),
       linear-gradient(to bottom, #fff 78%, transparent 100%);
+  }
+
+  .climbing-photo__img {
+    object-position: center top;
   }
 }
