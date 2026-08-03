@@ -1,9 +1,9 @@
 import './link-list.css';
 
 /*
-  Glyphs carry no fill attribute: fill is set on the <a> in CSS and inherits
-  in, which is what lets a:visited recolor them (fill is on the small list of
-  properties :visited is allowed to style).
+  Glyphs carry no fill/stroke attributes: both are set on the <a> in CSS and
+  inherit in, which is what lets a:visited recolor them (fill and stroke are
+  on the small list of properties :visited is allowed to style).
 */
 
 function LinkedInGlyph() {
@@ -14,11 +14,15 @@ function LinkedInGlyph() {
   );
 }
 
-function FileGlyph() {
+/* Outlined CV: document with folded corner, person silhouette, two lines. */
+function ResumeGlyph() {
   return (
-    <svg className="glyph" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-      <path d="M5.625 1.5c-1.036 0-1.875.84-1.875 1.875v17.25c0 1.035.84 1.875 1.875 1.875h12.75c1.035 0 1.875-.84 1.875-1.875V12.75A3.75 3.75 0 0 0 16.5 9h-1.875a1.875 1.875 0 0 1-1.875-1.875V5.25A3.75 3.75 0 0 0 9 1.5H5.625Z" />
-      <path d="M12.971 1.816A5.23 5.23 0 0 1 14.25 5.25v1.875c0 .207.168.375.375.375H16.5a5.23 5.23 0 0 1 3.434 1.279 9.768 9.768 0 0 0-6.963-6.963Z" />
+    <svg className="glyph glyph--resume" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M15 2.75H7A1.75 1.75 0 0 0 5.25 4.5v15A1.75 1.75 0 0 0 7 21.25h10a1.75 1.75 0 0 0 1.75-1.75V6.5L15 2.75Z" />
+      <path d="M15 2.75V6.5h3.75" />
+      <circle cx="11" cy="8.1" r="1.7" />
+      <path d="M8 13.5a3 3 0 0 1 6 0" />
+      <path d="M8.25 16.4h7.5M8.25 18.9h7.5" />
     </svg>
   );
 }
@@ -52,7 +56,7 @@ const LINKS = [
     href: '/resume.pdf',
     ariaLabel: 'Resume PDF (opens in new tab)',
     external: true,
-    Glyph: FileGlyph,
+    Glyph: ResumeGlyph,
   },
   {
     href: 'mailto:jyan0602@gmail.com',

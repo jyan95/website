@@ -68,24 +68,32 @@
 .link-list a {
   display: block;
   padding: 0.45em 0;
-  transition: fill var(--duration-fast) var(--ease-out-expo);
+  transition:
+    fill var(--duration-fast) var(--ease-out-expo),
+    stroke var(--duration-fast) var(--ease-out-expo);
 }
 
+/* stroke is set alongside fill (both are :visited-styleable); solid glyphs
+   zero it out via stroke-width so only the outlined resume glyph uses it. */
 .link-list a:link {
   fill: var(--color-link);
+  stroke: var(--color-link);
 }
 
 .link-list a:visited {
   fill: var(--color-link-visited);
+  stroke: var(--color-link-visited);
 }
 
 .link-list a:hover,
 .link-list a:focus-visible {
   fill: var(--color-link-hover);
+  stroke: var(--color-link-hover);
 }
 
 .link-list a:active {
   fill: var(--color-link-hover);
+  stroke: var(--color-link-hover);
 }
 
 .link-list a:focus-visible {
@@ -97,11 +105,20 @@
   display: block;
   width: 1.4em;
   height: 1.4em;
+  stroke-width: 0;
 }
 
 /* The H mark's 904x353 box at the same 1.4em height. */
 .glyph--wide {
   width: calc(1.4em * 904 / 353);
+}
+
+/* Outline-drawn, so it inverts the scheme: stroke does the work, no fill. */
+.glyph--resume {
+  fill: none;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 /*
