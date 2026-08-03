@@ -1,0 +1,60 @@
+/*
+  Mirrors .name-overlay's treatment (same family, weight, tracking, inset and
+  over-photo shadow) but a size down and dimmed, so the name stays the primary
+  mark and these read as chrome.
+
+  Each note is fixed to its own corner. position:fixed is not clipped by
+  .page's overflow because .page creates no containing block -- same reason
+  .name-overlay works.
+*/
+.corner-note {
+  position: fixed;
+  z-index: 10;
+  margin: 0;
+  color: var(--color-text-dim);
+  font-family: var(--font-brand-sans);
+  font-weight: 300;
+  font-size: 0.75rem;
+  line-height: 1;
+  letter-spacing: 0.14em; /* a touch more than the name: small caps need air */
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-shadow: 0 2px 24px rgb(0 0 0 / 0.5);
+
+  /* Settles in after the glyph ladder has finished staggering up. */
+  opacity: 0;
+  animation: corner-fade-in 0.6s ease-out 0.9s forwards;
+}
+
+@keyframes corner-fade-in {
+  to {
+    opacity: 1;
+  }
+}
+
+.corner-note--tr {
+  top: var(--corner-inset);
+  right: var(--corner-inset);
+}
+
+.corner-note--bl {
+  bottom: var(--corner-inset);
+  left: var(--corner-inset);
+}
+
+.corner-note--br {
+  bottom: var(--corner-inset);
+  right: var(--corner-inset);
+}
+
+/*
+  Only the top-right note survives on phones: the glyph ladder owns the whole
+  lower-right quadrant there, and the bottom-left note would sit under the
+  widest row of it.
+*/
+@media (max-width: 767px) {
+  .corner-note--bl,
+  .corner-note--br {
+    display: none;
+  }
+}

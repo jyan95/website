@@ -8,6 +8,10 @@
   --color-link: #ffffff;
   --color-link-hover: #4b8bff;
   --color-link-visited: #a97dfc;
+  --color-text-dim: rgb(255 255 255 / 0.55); /* corner chrome */
+
+  /* Shared by the name and the corner notes so all four corners align. */
+  --corner-inset: clamp(1.25rem, 4vw, 2.5rem);
 
   --photo-blur: 4px;
   --static-opacity: 0.16; /* master gain; layer strengths baked into the SVGs */
