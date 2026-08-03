@@ -7,7 +7,6 @@
   --tint-rgb: 19 19 24;
   --color-link: #ffffff;
   --color-link-hover: #4b8bff;
-  --color-link-visited: #a97dfc;
   --color-text-dim: rgb(255 255 255 / 0.55); /* corner chrome */
 
   /* Shared by the name and the corner notes so all four corners align. */

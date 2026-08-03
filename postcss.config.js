@@ -6,4 +6,4 @@ export default {
     // Autoprefixer adds vendor prefixes to CSS rules for broader browser compatibility.
     autoprefixer: {},
   },
-}
+};

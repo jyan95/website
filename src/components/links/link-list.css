@@ -113,20 +113,17 @@
   transition: stroke var(--duration-fast) var(--ease-out-expo);
 }
 
-.link-list a:link {
+/*
+  No :visited or :active recolor -- the marks stay white whether or not
+  they've been clicked, so the ladder always reads as one set. Hover is the
+  only colour state.
+*/
+.link-list a {
   stroke: var(--color-link);
-}
-
-.link-list a:visited {
-  stroke: var(--color-link-visited);
 }
 
 .link-list a:hover,
 .link-list a:focus-visible {
-  stroke: var(--color-link-hover);
-}
-
-.link-list a:active {
   stroke: var(--color-link-hover);
 }
 
@@ -147,6 +144,34 @@
   stroke-width: 1.5;
   stroke-linecap: round;
   stroke-linejoin: round;
+
+  /*
+    Hover spins the mark on its vertical axis. The animation is always
+    attached but paused, so leaving mid-turn freezes the mark where it is
+    instead of snapping back to face-on.
+  */
+  animation: glyph-spin 4s linear infinite;
+  animation-play-state: paused;
+}
+
+.link-list a:hover .glyph,
+.link-list a:focus-visible .glyph {
+  animation-play-state: running;
+}
+
+@keyframes glyph-spin {
+  from {
+    transform: perspective(600px) rotateY(0deg);
+  }
+  to {
+    transform: perspective(600px) rotateY(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glyph {
+    animation: none;
+  }
 }
 
 /*
