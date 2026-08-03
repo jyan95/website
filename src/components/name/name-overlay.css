@@ -7,7 +7,7 @@
   color: #ffffff;
   font-family: var(--font-brand-sans);
   font-weight: 300; /* Helvetica Light -- thinnest real face in the stack */
-  font-size: clamp(1rem, 2.8vw, 2.1rem);
+  font-size: 1rem;
   line-height: 0.95;
   letter-spacing: 0.12em;
   text-transform: uppercase;
