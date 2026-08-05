@@ -1,0 +1,8 @@
+# The resume PDF carries a phone number and email in extractable text, and
+# search engines do index PDF contents. Keeping it out of the crawl means it
+# won't surface in search results. This is advisory only -- it stops well-
+# behaved crawlers, not a determined scraper hitting the URL directly.
+User-agent: *
+Disallow: /resume.pdf
+
+# No sitemap: single page, nothing to enumerate.
