@@ -1,6 +1,16 @@
 import './link-list.css';
 
 /*
+  Joined at runtime so the address never appears as a harvestable string in
+  the bundle or the served HTML -- regex address scrapers key on a literal
+  local@domain and find nothing. Costs nothing in UX or accessibility: the
+  rendered href is identical, and this SPA never served meaningful no-JS
+  markup anyway. It does not hide the address from anyone who opens the page
+  in a browser, and it isn't meant to.
+*/
+const EMAIL = ['jyan0602', 'gmail.com'].join('@');
+
+/*
   Outline glyph set. No fill/stroke attributes on the shapes: stroke color is
   set on the <a> in CSS and inherits in, which is what lets a:visited recolor
   them (stroke is on the small list of properties :visited is allowed to
@@ -135,7 +145,7 @@ const LINKS = [
     Glyph: ResumeGlyph,
   },
   {
-    href: 'mailto:jyan0602@gmail.com',
+    href: `mailto:${EMAIL}`,
     ariaLabel: 'Email Joshua',
     external: false,
     Glyph: GmailGlyph,
